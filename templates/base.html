@@ -24,31 +24,43 @@
     
     <title>Monica's Auction</title>
 </head>
+
+
 <body>
     <!-- NavBar area -  Fixed masthead -->
-    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Rasquin</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Rasquin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i> Log Out</a>
+                        </li>
                     {%  else %}
-                        <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-                        <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
+                        </li>
                     {% endif %}
                     
                 </ul>
-            </div>
         </div>
     </nav>
     
@@ -75,9 +87,27 @@
     </div>
     
     <!-- Footer area -->
-    <footer>
-        <div class="container">
-            <p>Made by Rasquin</p>
+    <footer class="container-fluid">
+
+
+        <!----------------------------------------------------------------------------SOCIAL MEDIA-->
+        <div class="row ">
+            <div class="col-12 text-center">
+                <h5 class="text-uppercase">Follow Us</h5>
+                <ul class="list-inline social-links">
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest-square"  aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------COPYRIGHT-->
+        <div class="row ">
+            <div class="col-12">
+
+                <p class="text-center text-uppercase">Made by Monica Rasquin <i class="far fa-copyright"></i> </p>
+            </div>
         </div>
     </footer>
     
