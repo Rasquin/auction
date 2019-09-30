@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-10">
+        
+        <!-- Artifact Image-->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="artifact" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+            </div>
+        </div>
+        
+        <!-- Artifact Name & Published date-->
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ artifact.name }}</h2>
+            </div>
+            <div class="col-12">
+                <p>Bidding started on {{ artifact.published_date }}</p>
+            </div>
+        </div>
+        
+        <!-- Artifact Origin-->
+        <div class="row">
+            <div class="col-12">
+                <p class="font-weight-bold">Origin:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ artifact.origin }}</p>
+            </div>
+        </div>
+        
+        <!-- Artifact Age-->
+        <div class="row">
+            <div class="col-12">
+                <p class="font-weight-bold">Age:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ artifact.age }}</p>
+            </div>
+        </div>
+        
+        <!-- Artifact Description-->
+        <div class="row">
+            <div class="col-12">
+                <p class="font-weight-bold">Description:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ artifact.description }}</p>
+            </div>
+        </div>  
+        
+        <!-- Artifact Crafting-->
+        <div class="row">
+            <div class="col-12">
+                <p class="font-weight-bold">Crafting:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ artifact.crafting }}</p>
+            </div>
+        </div>
+
+        <!-- Artifact Trajectory-->
+        <div class="row">
+            <div class="col-12">
+                <p class="font-weight-bold">Trajectory:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ artifact.trajectory }}</p>
+            </div>
+        </div>
+        
+        <!-- Bidding & Inmediate buying-->
+        
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-12"><p>Initial Price: {{ artifact.initial_price }}</p></div>
+                    <div class="col-12 col-md-6"><p>Bidding Price: {{ artifact.bidding_price }}</p></div>
+                    <div class="col-12 col-md-6"><p>Buying Proce: {{ artifact.buying_price }}</p></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
