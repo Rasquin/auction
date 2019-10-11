@@ -12,9 +12,9 @@ class Artifact(models.Model):
     crafting = models.TextField()
     trajectory = models.TextField()
     
-    initial_price = models.DecimalField(max_digits=9, decimal_places=2)
-    bidding_price = models.DecimalField(max_digits=9, decimal_places=2)
-    buying_price = models.DecimalField(max_digits=9, decimal_places=2)
+    expert_value = models.DecimalField(max_digits=9, decimal_places=2)
+    current_bidding_price = models.DecimalField(max_digits=9, decimal_places=2)
+    buy_now_price = models.DecimalField(max_digits=9, decimal_places=2)
     
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     bidding_time = models.IntegerField(default=0)

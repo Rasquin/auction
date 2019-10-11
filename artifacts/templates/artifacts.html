@@ -7,9 +7,9 @@
             <div class="panel-body">
                 <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
 
-                <h3><a href="{% url 'artifact' id=artifact.id %}">{{ artifact.name }}</a></h3>
+                <h3><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
                 <p class="artifact-description">{{ artifact.description|truncatewords:140 }}</p>
-                <p>{{ artifact.initial_price }}</p>
+                <p> Current bid € {{ artifact.current_bidding_price }}</p>
 
                 
             </div>

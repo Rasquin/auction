@@ -15,6 +15,25 @@ def bidding_status(request, id):
         artifact.on_bidding = False
     return redirect(get_all_artifacts)
 
+    
+    """
+    def bidding_status(request, pk):
+    artifact = get_object_or_404(Artifact, pk=pk)
+    if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
+        artifact.on_bidding = True
+    else:
+        artifact.on_bidding = False
+    return redirect(get_all_artifacts)
+    
+def bidding_status(request, id):
+    artifact = get_object_or_404(Artifact, pk=id)
+    if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
+        artifact.on_bidding = True
+    else:
+        artifact.on_bidding = False
+    return redirect(get_all_artifacts)
+"""
+
 def get_one_artifact(request, pk):
     the_artifact = get_object_or_404(Artifact, pk=pk)
     return render(request, "artifact.html", {"artifact": the_artifact})
