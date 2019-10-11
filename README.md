@@ -47,7 +47,9 @@ through the use of block-contents.
 **Apps** (backend) Here are imported all the neccesary libraries in order to make the 
 caractheristics of the project work. There are a total of 24 routes, together they 
 help to render templates, redirect to other template of make calculus of variables.
-- Accounts
+- Accounts app
+- Artifacts app
+- Bidding app
 - django_forms_bootstrap3.1.0
 - Routes: 
    * '/cookbook': Home website
