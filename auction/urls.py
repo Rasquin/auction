@@ -20,6 +20,8 @@ from .settings import MEDIA_ROOT
 from artifacts.views import get_all_artifacts
 from accounts import urls as urls_accounts
 from artifacts import urls as urls_artifacts
+from bidding import urls as urls_bidding
+from mybiddings import urls as urls_mybiddings
 
 
 urlpatterns = [
@@ -27,5 +29,7 @@ urlpatterns = [
     url(r'^$', get_all_artifacts, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^artifacts/', include(urls_artifacts)),
+    url(r'^bidding/', include(urls_bidding)),
+    url(r'^mybiddings/', include(urls_mybiddings)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

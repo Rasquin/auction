@@ -4,67 +4,49 @@ from .models import Artifact
 
 # Create your views here.
 def get_all_artifacts(request):
+    """
+    Get the list of artifacts that are in the auction
+    """
     artifacts = Artifact.objects.all()
     return render(request, "artifacts.html", {"artifacts": artifacts})
 
 def bidding_status(request, id):
-    artifact = get_object_or_404(Artifact, pk=id)
-    if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
-        artifact.on_bidding = True
-    else:
-        artifact.on_bidding = False
-    return redirect(get_all_artifacts)
-
-    
     """
-    def bidding_status(request, pk):
-    artifact = get_object_or_404(Artifact, pk=pk)
-    if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
-        artifact.on_bidding = True
-    else:
-        artifact.on_bidding = False
-    return redirect(get_all_artifacts)
-    
-def bidding_status(request, id):
+    Define if an aritfact is or not for auction
+    """
     artifact = get_object_or_404(Artifact, pk=id)
     if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
         artifact.on_bidding = True
     else:
         artifact.on_bidding = False
     return redirect(get_all_artifacts)
-"""
 
+    
 def get_one_artifact(request, pk):
+    """
+    Get the info of one particular artifact
+    """
     the_artifact = get_object_or_404(Artifact, pk=pk)
     return render(request, "artifact.html", {"artifact": the_artifact})
     
-    
 
-"""
-
-    def bidding_status(published_date ,validity_period):
-    if datetime.datetime.now() <= published_date + datetime.timedelta(hours=bidding_time):
-        on_bidding = True
-        return artifact.on_bidding
-    else
-        on_bidding = False
-    return artifact.on_bidding
+def get_buy_now_price (request, id):
+    """
+    Define the price to buy the artifact inmediately.
+    Depending on the current_bidding_price & expert_value the buy_now_price change
+    """
+    the_artifact = get_object_or_404(Artifact, pk=id)
+    
+    if the_artifact.current_bidding_price <= 0.5*the_artifact.expert_value:
+        the_artifact.buy_now_price = 0.75*the_artifact.expert_value
+    
+    elif 0.5*the_artifact.expert_value < the_artifact.current_bidding_price < the_artifact.expert_value:
+        the_artifact.buy_now_price = 2*the_artifact.current_bidding_price
+    
+    else:
+        the_artifact.buy_now_price = 1.5*the_artifact.current_bidding_price
+        
+    return redirect(get_one_artifact)
     
     
-    name = models.CharField(max_length=254, default='')
-    image = models.ImageField(upload_to='images')
-    origin = models.CharField(max_length=200, default='')
-    age = models.CharField(max_length=200, default='')
-    description = models.TextField()
-    crafting = models.TextField()
-    trajectory = models.TextField()
     
-    initial_price = models.DecimalField(max_digits=9, decimal_places=2)
-    bidding_price = models.DecimalField(max_digits=9, decimal_places=2)
-    buying_price = models.DecimalField(max_digits=9, decimal_places=2)
-    
-    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    bidding_time = models.IntegerField(default=0)
-    
-    on_bidding = models.BooleanField(blank=False, default=True)
-"""

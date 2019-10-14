@@ -59,6 +59,14 @@
                             <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
                         </li>
                     {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'view_my_biddings' %}">
+                                <i class="fas fa-gavel"></i>My Biddings
+                                {% if product_count > 0 %}
+                                <label class="badge badge-warning">{{ product_count }}</label>
+                                {% endif %}
+                            </a>
+                        </li>
                     
                 </ul>
         </div>

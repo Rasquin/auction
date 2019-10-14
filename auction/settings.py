@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'artifacts',
     'bidding',
+    'mybiddings',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'mybiddings.contexts.my_bidding_list',
             ],
         },
     },

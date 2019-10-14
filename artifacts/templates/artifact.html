@@ -100,13 +100,13 @@
                     </div>
                     <!-- Place New Bidding Form-->
                     <div class="col-12">
-                        <form method="post" action="#">
+                        <form method="post" action="{% url 'place_bidding' artifact.pk %}">
                             {% csrf_token %}
                             
                             <div class="row form-group">
                                 <div class="col-12">
                                     
-                                    <input name="new_bidding" type="number" min="1"  class="form-control"  placeholder="€€€">
+                                    <input name="new_bidding" type="number" min="1"  class="form-control"  placeholder="€€€" >
                                 </div>
                                 <div class="col-12">
                                     <span class="input-group-btn">
@@ -135,6 +135,14 @@
                         <a class="btn btn-primary" href="#" role="button">Buy Now !!!</a>
                     </div>
                 </div>
+                
+                {% if messages %}
+                <div class="alert alert-success">
+                    <div class="messages">
+                        {% for message in messages %} {{ message }} {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
         
