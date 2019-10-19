@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from decimal import Decimal
 from artifacts.models import Artifact
+from artifacts.views import get_one_artifact
 
 # Create your views here.
 
@@ -10,7 +12,7 @@ def place_bidding(request, id):
     "Place a new bidding on an artifact"
     
     the_artifact = get_object_or_404(Artifact, pk=id)
-    new_bidding =  int(request.POST.get('new_bidding'))
+    new_bidding =  Decimal(request.POST.get('new_bidding'))
     #quantity = int(request.POST.get('quantity'))
     
     if the_artifact.current_bidding_price >= new_bidding:
@@ -18,9 +20,12 @@ def place_bidding(request, id):
     
     else:
         the_artifact.current_bidding_price = new_bidding
+        the_artifact.save()
         messages.error(request, "Your bid has been successfully placed !")
     
-    return  render(request, "artifact.html", {"artifact": the_artifact})
+    return redirect(reverse('index'))
+    #return redirect(get_one_artifact(request,id))
+    #return  render(request, "artifact.html", {"artifact": the_artifact})
     
 
 

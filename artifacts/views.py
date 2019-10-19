@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from decimal import Decimal
 from datetime import datetime, timedelta
 from .models import Artifact
 
@@ -27,6 +29,21 @@ def get_one_artifact(request, pk):
     Get the info of one particular artifact
     """
     the_artifact = get_object_or_404(Artifact, pk=pk)
+    
+    if the_artifact.current_bidding_price <= Decimal(0.5)*the_artifact.expert_value:
+        the_artifact.buy_now_price = round(Decimal(0.75)*the_artifact.expert_valuex,2)
+        #messages.error(request, "buying price 0.75 of expert_value!")
+    
+    elif Decimal(0.5)*the_artifact.expert_value < the_artifact.current_bidding_price < the_artifact.expert_value:
+        the_artifact.buy_now_price = round(Decimal(2)*the_artifact.current_bidding_price,2)
+        #messages.error(request, "buying price 2 of current bid!")
+    
+    else:
+        the_artifact.buy_now_price = round(Decimal(1.5)*the_artifact.current_bidding_price,2)
+        #messages.error(request, "buying price 1.5 of current bid")
+    
+    the_artifact.save()
+    
     return render(request, "artifact.html", {"artifact": the_artifact})
     
 
@@ -37,16 +54,22 @@ def get_buy_now_price (request, id):
     """
     the_artifact = get_object_or_404(Artifact, pk=id)
     
-    if the_artifact.current_bidding_price <= 0.5*the_artifact.expert_value:
-        the_artifact.buy_now_price = 0.75*the_artifact.expert_value
+    if the_artifact.current_bidding_price <= Decimal(0.5)*the_artifact.expert_value:
+        the_artifact.buy_now_price = round(Decimal(0.75)*the_artifact.expert_valuex,2)
+        #messages.error(request, "buying price 0.75 of expert_value!")
     
-    elif 0.5*the_artifact.expert_value < the_artifact.current_bidding_price < the_artifact.expert_value:
-        the_artifact.buy_now_price = 2*the_artifact.current_bidding_price
+    elif Decimal(0.5)*the_artifact.expert_value < the_artifact.current_bidding_price < the_artifact.expert_value:
+        the_artifact.buy_now_price = round(Decimal(2)*the_artifact.current_bidding_price,2)
+        # messages.error(request, "buying price 2 of current bid!")
     
     else:
-        the_artifact.buy_now_price = 1.5*the_artifact.current_bidding_price
+        the_artifact.buy_now_price = round(Decimal(1.5)*the_artifact.current_bidding_price,2)
+        #messages.error(request, "buying price 1.5 of current bid")
+    
+    the_artifact.save()
         
-    return redirect(get_one_artifact)
+    return {"artifact": the_artifact}
+    #return redirect(get_one_artifact)
     
     
     

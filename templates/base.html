@@ -83,14 +83,31 @@
         </div>
     {% endif %}
     
-    <!-- Block content area -->
-    <div class="container">
-        <div class="display">
-            <form action="#" method="get">
-                <input type="text" name="q">
-                <button type="search">Search</button>
+    <!-- Search area -->
+    <div class="container-fluid">
+        <h4 class="text-center"> What are you looking for?</h4>
+        <div class="row ">
+            
+            <!-- Search by name -->
+            <form action="{% url 'search_by_name' %}" method="get" class="col-12">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-8 col-md-6 col-lg-3">
+                            <input type="text" class="form-control" id="artifact_name" name="artifact_name" required placeholder="Name of artifact">
+                        </div> 
+                        <div class="col-1">
+                            <button class="btn btn-primary" type="search">Search</button>
+                        </div>
+                    </div>
+                </div>
             </form>
+        
         </div>
+    </div>
+    
+        <!-- Block content area -->
+    <div class="container-fluid">
         {% block content %} {% endblock %}
     </div>
     
@@ -98,7 +115,7 @@
     <footer class="container-fluid">
 
 
-        <!----------------------------------------------------------------------------SOCIAL MEDIA-->
+        <!-- SOCIAL MEDIA-->
         <div class="row ">
             <div class="col-12 text-center">
                 <h5 class="text-uppercase">Follow Us</h5>
@@ -110,7 +127,7 @@
             </div>
         </div>
 
-        <!-------------------------------------------------------------------------------COPYRIGHT-->
+        <!--COPYRIGHT-->
         <div class="row ">
             <div class="col-12">
 
