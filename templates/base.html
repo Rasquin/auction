@@ -15,8 +15,15 @@
     <!-- Font Awesome compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'font-awesome/css/all.css' %}">
     
+
+    
     <!-- Own CSS -->
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" type="text/css" />
+    
+
+    <!-- Own Scripts -->
+    <script type="text/javascript" src="{% static 'js/myscript.js' %}"></script>
+    
     
     
     {% block head_js %}
@@ -102,6 +109,37 @@
                     </div>
                 </div>
             </form>
+            
+            <!-- Filters -->
+            <form action="{% url 'filters' %}" method="get" class="col-12">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <p>
+                                <label for="amount">Price range:</label>
+                                
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            
+                            <section class="range-slider">
+                                
+                                <span class="rangeValues"></span>
+                                <input value="500" min="500" max="50000" step="500" type="range">
+                                <input value="50000" min="500" max="50000" step="500" type="range">
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-center">
+                                <button class="btn btn-primary" type="search">Filter</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
         
         </div>
     </div>
@@ -135,6 +173,7 @@
             </div>
         </div>
     </footer>
+
     
     <!-- Bootstrap compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
