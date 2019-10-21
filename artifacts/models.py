@@ -7,7 +7,7 @@ class Artifact(models.Model):
     name = models.CharField(max_length=254, default='')
     image = models.ImageField(upload_to='images')
     origin = models.CharField(max_length=200, default='')
-    age = models.CharField(max_length=200, default='')
+    year = models.IntegerField(default=2020)
     description = models.TextField()
     crafting = models.TextField()
     trajectory = models.TextField()
@@ -23,3 +23,5 @@ class Artifact(models.Model):
 
     def __str__(self):
         return self.name
+    
+    #def __init__(self)

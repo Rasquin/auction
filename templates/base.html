@@ -90,63 +90,106 @@
         </div>
     {% endif %}
     
-    <!-- Search area -->
-    <div class="container-fluid">
-        <h4 class="text-center"> What are you looking for?</h4>
-        <div class="row ">
-            
-            <!-- Search by name -->
-            <form action="{% url 'search_by_name' %}" method="get" class="col-12">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-8 col-md-6 col-lg-3">
-                            <input type="text" class="form-control" id="artifact_name" name="artifact_name" required placeholder="Name of artifact">
-                        </div> 
-                        <div class="col-1">
-                            <button class="btn btn-primary" type="search">Search</button>
+    <div class="container-general">
+        <!-- Search area -->
+        <div class="container-fluid border-bottom-double">
+            <h4 class="text-center"> What are you looking for?</h4>
+            <div class="row ">
+    
+                <!-- Search by name -->
+                <form action="{% url 'search_by_name' %}" method="get" class="col-12">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <input type="text" class="form-control" id="artifact_name" name="artifact_name" required placeholder="Name of artifact">
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary" type="search">Search</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            
-            <!-- Filters -->
-            <form action="{% url 'filters' %}" method="get" class="col-12">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-12 col-md-2">
-                            <p>
-                                <label for="amount">Price range:</label>
-                                
-                            </p>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            
-                            <section class="range-slider">
-                                
-                                <span class="rangeValues"></span>
-                                <input value="500" min="500" max="50000" step="500" type="range">
-                                <input value="50000" min="500" max="50000" step="500" type="range">
-                            </section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="text-center">
-                                <button class="btn btn-primary" type="search">Filter</button>
-                            </p>
+                </form>
+    
+                <!-- Filters -->
+                <form action="{% url 'filters' %}" method="post" class="col-12">
+                    {% csrf_token %}
+                    
+                    <!-- Price Filter -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <p>
+                                    <label for="amount">Price range:</label>
+    
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-9">
+    
+                                <section class="range-slider-price range-slider">
+    
+                                    <span class="rangePriceValues rangeValues"></span>
+                                    <input value="0" min="0" max="1000000" step="500" type="range" name="min_price">
+                                    <input value="1000000" min="0" max="1000000" step="500" type="range" name="max_price">
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        
+                    <!-- Year Filter -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <p>
+                                    <label for="amount">Year:</label>
+    
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-9">
+    
+                                <section class="range-slider-year range-slider">
+    
+                                    <span class="rangeYearValues"></span>
+                                    <input value="-2000" min="-2000" max="2020" step="20" type="range" name="min_year">
+                                    <input value="2020" min="-2000" max="2020" step="20" type="range" name="max_year">
+                                </section>
+                            </div>
+                        </div>
+                    </div> 
+                    <!-- Origin Filter -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <p>
+                                    <label for="origin">Culture & Origin:</label>
+    
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Filter Button -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="text-center">
+                                    <button class="btn btn-primary" type="search">Filter</button>
+                                </p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                </form>
+    
+            </div>
         </div>
-    </div>
     
         <!-- Block content area -->
-    <div class="container-fluid">
-        {% block content %} {% endblock %}
+        <div class="container-fluid">
+            {% block content %} {% endblock %}
+        </div>
+    
     </div>
     
     <!-- Footer area -->

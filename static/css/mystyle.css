@@ -1,5 +1,20 @@
 body {
-    background-color: beige;
+    background-color: #936b4e;
+}
+
+
+.container-general{
+  background-color: beige;
+  padding: 10px;
+  margin: 0px 10px;
+}
+
+.col-auto {
+  padding: 10px;
+}
+
+.border-bottom-double {
+    border-bottom: 10px double #936b4e!important;
 }
 
 .artifacts-image {
@@ -38,8 +53,7 @@ body {
 
 /*----------------------slider*/
 section.range-slider {
-  position: relative;
-  width: 50%;
+  width: 100%;
   height: 100px;
   float: left;
   text-align: center;
@@ -57,7 +71,7 @@ section.range-slider input[type="range"] {
   overflow: hidden;
   left: 0;
   top: 50px;
-  width: 300px;
+  width: 100%;
   outline: none;
   height: 20px;
   margin: 0;
