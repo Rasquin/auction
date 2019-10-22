@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'artifacts',
     'bidding',
     'mybiddings',
+    'payment',
     'search'
 ]
 
@@ -144,5 +145,8 @@ AUTHENTICATION_BACKENDS = [
     # in the ecommerce video they used --> 'accounts.backends.CaseInsensitiveAuth'
     # in the auth miniproject the video used --> 'accounts.backends.EmailAuth'
 ]
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
