@@ -25,11 +25,8 @@
     <script type="text/javascript" src="{% static 'js/myscript.js' %}"></script>
     
     
-    
-    {% block head_js %}
-    {% endblock head_js %}
-    
-    <title>Monica's Auction</title>
+    <title>{% block page_title %}{% endblock %}</title>
+
 </head>
 
 
