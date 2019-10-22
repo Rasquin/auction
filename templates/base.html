@@ -109,7 +109,8 @@
                 </form>
     
                 <!-- Filters -->
-                <form action="{% url 'filters' %}" method="post" class="col-12">
+                
+                <form action="{% url 'filters' %}" method="get" class="col-12">
                     {% csrf_token %}
                     
                     <!-- Price Filter -->
@@ -162,7 +163,7 @@
                                 </p>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin" value="">
+                                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin" >
                             </div>
                         </div>
                     </div>

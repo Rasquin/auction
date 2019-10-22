@@ -7,7 +7,7 @@ def search_by_name(request):
     """
     Filters by name  the list of artifacts that are in the auction 
     """
-    artifacts = Artifact.objects.filter(name__icontains=request.GET['q']) # for some reaseon dont want to get by artifact_name
+    artifacts = Artifact.objects.filter(name__icontains=request.GET['q']) # for some reason doesnt want to get by artifact_name
     return render(request, "artifacts.html", {"artifacts": artifacts})
 
 def filters(request):
@@ -16,12 +16,12 @@ def filters(request):
     """
     the_artifacts = Artifact.objects.all()
     artifacts = []
-    min_price =  Decimal(request.POST.get('min_price'))
-    max_price =  Decimal(request.POST.get('max_price'))
-    min_year =  Decimal(request.POST.get('min_year'))
-    max_year =  Decimal(request.POST.get('max_year'))
-    #request.form.get('recipe_name')
-    artifact_origin = request.POST.get('artifact_origin')
+    min_price =  Decimal(request.GET.get('min_price'))
+    max_price =  Decimal(request.GET.get('max_price'))
+    min_year =  Decimal(request.GET.get('min_year'))
+    max_year =  Decimal(request.GET.get('max_year'))
+    
+    artifact_origin = request.GET.get('artifact_origin')
     
     for artifact in the_artifacts:
         #if current_bidding_price is inside the limits of search
@@ -43,7 +43,7 @@ def filters(request):
                     artifacts.append(artifact)
                 #if there is an imput for the origin filter
                 else :
-                    artifacts = Artifact.objects.filter(origin__search='hola') 
+                    artifacts = Artifact.objects.filter(origin__search='artifact_origin') 
                     #Entry.objects.filter(body_text__search='cheese')
                 
         #if current_bidding_price >= max_price possible. It cannot be lower than min_price    

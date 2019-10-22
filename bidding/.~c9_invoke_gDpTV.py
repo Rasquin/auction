@@ -23,9 +23,8 @@ def place_bidding(request, id):
         the_artifact.save()
         messages.error(request, "Your bid has been successfully placed !")
     
-    #return redirect(reverse('index'))
-    #return render(request, "artifact.html", {"artifact": the_artifact})
-    return redirect('/artifacts/' + id)
+    return redirect(reverse('index'))
+    #return redirect(get_one_artifact(request,id))
     #return  render(request, "artifact.html", {"artifact": the_artifact})
     
 
