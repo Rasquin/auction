@@ -23,6 +23,7 @@ from artifacts import urls as urls_artifacts
 from bidding import urls as urls_bidding
 from mybiddings import urls as urls_mybiddings
 from search import urls as urls_search
+from payment import urls as urls_payment
 
 
 urlpatterns = [
@@ -33,5 +34,6 @@ urlpatterns = [
     url(r'^bidding/', include(urls_bidding)),
     url(r'^mybiddings/', include(urls_mybiddings)),
     url(r'^search/', include(urls_search)),
+    url(r'^payment/', include(urls_payment)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

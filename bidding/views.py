@@ -20,38 +20,8 @@ def place_bidding(request, id):
     
     else:
         the_artifact.current_bidding_price = new_bidding
+        the_artifact.by_user = request.session['username']
         the_artifact.save()
         messages.error(request, "Your bid has been successfully placed !")
-    
-    #return redirect(reverse('index'))
-    #return render(request, "artifact.html", {"artifact": the_artifact})
+
     return redirect('/artifacts/' + id)
-    #return  render(request, "artifact.html", {"artifact": the_artifact})
-    
-
-
-    
-
-"""
-
-from decimal import Decimal
-Decimal(request.POST.get('whatever'))
-
-def add_to_cart(request, id):
-    "Add a quantity of the specified product to the cart"
-    quantity = int(request.POST.get('quantity'))
-
-    cart = request.session.get('cart', {})
-    
-    if id in cart:
-        #If the item is already in the cart, you want to add the new quantity to the existing quantity. 
-        cart[id] = int(cart[id]) + quantity      
-    else:
-        #However, if the item is not in the cart, then the current add_to_cart view works.
-        cart[id] = cart.get(id, quantity) 
-
-
-    request.session['cart'] = cart
-    return redirect(reverse('index'))# the products.hml is called index
-
-"""

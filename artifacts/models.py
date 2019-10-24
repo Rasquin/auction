@@ -11,17 +11,20 @@ class Artifact(models.Model):
     description = models.TextField()
     crafting = models.TextField()
     trajectory = models.TextField()
+    by_user = models.CharField(max_length=100, default='')
     
     expert_value = models.DecimalField(max_digits=9, decimal_places=2)
     current_bidding_price = models.DecimalField(max_digits=9, decimal_places=2)
     buy_now_price = models.DecimalField(max_digits=9, decimal_places=2)
+    price_to_pay = models.DecimalField(max_digits=9, decimal_places=2)
     
-    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    bidding_time = models.IntegerField(default=0)
+    published_date = models.DateTimeField(blank=False, null=True, default=timezone.now)
+    bidding_time = models.DurationField(blank=False, null=True)
+    
     
     on_bidding = models.BooleanField(blank=False, default=True)
+    paid = models.BooleanField(blank=False, default=False)
 
     def __str__(self):
         return self.name
     
-    #def __init__(self)

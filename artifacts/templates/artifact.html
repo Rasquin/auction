@@ -98,7 +98,7 @@
                         <p class="font-weight-bold">Current Bidding:</p>
                     </div>
                     <div class="col-12">
-                        <p>€ {{ artifact.current_bidding_price }}</p>
+                        <p>€ {{ artifact.current_bidding_price }} - {{ artifact.by_user }}</p>
                     </div>
                     <!-- Place New Bidding Form-->
                     <div class="col-12">
@@ -134,7 +134,7 @@
                     </div>
                     <!-- Buying form-->
                     <div class="col-12">
-                        <a class="btn btn-primary" href="#" role="button">Buy Now !!!</a>
+                        <a class="btn btn-primary" href="{% url 'payment' %}" role="button">Buy Now !!!</a>
                     </div>
                 </div>
                 

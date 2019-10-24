@@ -1,19 +1,21 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib.auth.decorators import login_required
+from datetime import datetime, timedelta
+from artifacts.models import Artifact
 
 # Create your views here.
 
+@login_required()  
 def view_my_biddings(request):
-    """A View that renders the cart contents page"""
-    return render(request, "mybiddings.html")
+    """A View that renders the artifacts that the user has won"""
+    artifacts = Artifact.objects.all()
+    my_biddings = []
+    user = request.session['username']
     
-def add_to_my_biddings(request, id):
-    """Add the artifact where I have bidded"""
-    
-    #cart = request.session.get('cart', {})
-    my_biddings = request.session.get('my_biddings', {})
-    
-    my_biddings[id] = my_biddings.get(id) 
-
-
-    request.session['my_biddings'] = my_biddings
-    return redirect(reverse('index'))
+    for artifact in artifacts:
+        if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
+           if user == artifact.by_user:
+               artifact.price_to_pay == artifact.current_bidding_price
+               my_biddings.append(artifact)
+               
+    return render(request, "mybiddings.html", {"my_biddings": my_biddings})

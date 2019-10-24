@@ -25,7 +25,7 @@ def payment(request):
 
             mybidding = request.session.get('mybidding')
             total = 0
-            for id  in mybidding.items():
+            for id  in mybidding:
                 artifact = get_object_or_404(Artifact, pk=id)
                 total += artifact.price_to_pay
                 order_line_item = OrderLineItem(
