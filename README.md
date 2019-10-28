@@ -177,3 +177,5 @@ The photos used in this project are labelled  for reuse.
 
 ## Acknowledgements
 The brief for this project was given by Code Institute. I received inspiration for this project from my siter Aurora, who is studying to become a cook. I always wished that we had our own cookbook full of our crazy recipes that we invent during the weekends when we share on family.
+
+[![Build Status](https://travis-ci.org/Rasquin/auction.svg?branch=master)](https://travis-ci.org/Rasquin/auction)
