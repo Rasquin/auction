@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('AWS_C9_HOSTNAME')]
+ALLOWED_HOSTS = [os.environ.get('AWS_C9_HOSTNAME'), os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
