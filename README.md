@@ -2,7 +2,7 @@
 
 Full Stack Frameworks with Django Milestone Project. This project consist of a full-stack site based on centrally-owned dataset  for an auction place. This site provides an  authentication mechanism for users, so that they will be able to find, bid and purchase antique artifacts. 
 
-This project is deployed at [Heroku]()
+This project is deployed at [Heroku](https://monica-auction.herokuapp.com/)
 
 
 ## UX

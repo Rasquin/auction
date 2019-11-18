@@ -20,6 +20,7 @@ class Artifact(models.Model):
     
     published_date = models.DateTimeField(blank=False, null=True, default=timezone.now)
     bidding_time = models.DurationField(blank=False, null=True)
+    #bidding_time = models.IntegerField(blank=False, null=True)
     
     
     on_bidding = models.BooleanField(blank=False, default=True)
