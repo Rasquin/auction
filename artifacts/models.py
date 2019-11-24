@@ -11,7 +11,7 @@ class Artifact(models.Model):
     description = models.TextField()
     crafting = models.TextField()
     trajectory = models.TextField()
-    by_user = models.CharField(max_length=100, default='')
+    by_user = models.IntegerField(default=1)
     
     expert_value = models.DecimalField(max_digits=9, decimal_places=2)
     current_bidding_price = models.DecimalField(max_digits=9, decimal_places=2)

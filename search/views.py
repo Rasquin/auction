@@ -7,7 +7,7 @@ def search_by_name(request):
     """
     Filters by name  the list of artifacts that are in the auction 
     """
-    artifacts = Artifact.objects.filter(name__icontains=request.GET['q']) # for some reason doesnt want to get by artifact_name
+    artifacts = Artifact.objects.filter(name__icontains=request.GET['artifact_name']) # for some reason doesnt want to get by artifact_name
     return render(request, "artifacts.html", {"artifacts": artifacts})
 
 def filters(request):

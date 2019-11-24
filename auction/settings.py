@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'bidding',
     'mybiddings',
     'payment',
-    'search'
+    'search',
 ]
 
 MIDDLEWARE = [
@@ -73,8 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
-                'mybiddings.contexts.my_bidding_list',
+                'django.template.context_processors.media'
+                #'mybiddings.contexts.my_bidding_list',
             ],
         },
     },
@@ -88,6 +88,7 @@ WSGI_APPLICATION = 'auction.wsgi.application'
 
 
 if "DATABASE_URL" in os.environ:
+    print("This thing")
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 else:

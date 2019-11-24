@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import User
 from decimal import Decimal
 from datetime import datetime, timedelta
 from .models import Artifact
@@ -11,7 +12,8 @@ def get_all_artifacts(request):
     """
     artifacts = Artifact.objects.all()
     return render(request, "artifacts.html", {"artifacts": artifacts})
-
+    #return render(request, "artifacts2.html")
+    
 def bidding_status(request, id):
     """
     Define if an aritfact is or not for auction
@@ -29,9 +31,11 @@ def get_one_artifact(request, pk):
     Get the info of one particular artifact
     """
     the_artifact = get_object_or_404(Artifact, pk=pk)
+    users = User.objects.all()
     
+   
     if the_artifact.current_bidding_price <= Decimal(0.5)*the_artifact.expert_value:
-        the_artifact.buy_now_price = round(Decimal(0.75)*the_artifact.expert_valuex,2)
+        the_artifact.buy_now_price = round(Decimal(0.75)*the_artifact.expert_value,2)
         #messages.error(request, "buying price 0.75 of expert_value!")
     
     elif Decimal(0.5)*the_artifact.expert_value < the_artifact.current_bidding_price < the_artifact.expert_value:
@@ -44,7 +48,12 @@ def get_one_artifact(request, pk):
     
     the_artifact.save()
     
-    return render(request, "artifact.html", {"artifact": the_artifact})
+
+    for user in users:
+        if the_artifact.by_user == user.id:
+            the_user = user
+    
+    return render(request, "artifact.html", {"artifact": the_artifact}, {"user": the_user})
     
 
 def get_buy_now_price (request, id):

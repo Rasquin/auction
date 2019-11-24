@@ -20,7 +20,8 @@ def place_bidding(request, id):
     
     else:
         the_artifact.current_bidding_price = new_bidding
-        the_artifact.by_user = request.session['username']
+        the_artifact.by_user = request.user.id
+        
         the_artifact.save()
         messages.error(request, "Your bid has been successfully placed !")
 
