@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from decimal import Decimal
 from artifacts.models import Artifact
+import numpy
 
 # Create your views here.
 def search_by_name(request):
@@ -18,11 +19,22 @@ def filters(request):
     artifacts = []
     min_price =  Decimal(request.GET.get('min_price'))
     max_price =  Decimal(request.GET.get('max_price'))
-    min_year =  Decimal(request.GET.get('min_year'))
-    max_year =  Decimal(request.GET.get('max_year'))
+    min_year =  int(request.GET.get('min_year'))
+    max_year =  int(request.GET.get('max_year'))
     
     artifact_origin = request.GET.get('artifact_origin')
     
+    for artifact in the_artifacts:
+        if artifact.current_bidding_price in numpy.arange(min_price, max_price):
+            print("I am the price filter")
+            if artifact.year in range(min_year, max_year):
+                print("I am the time filter")
+                #if artifact_origin == '':
+                   #print("I am the origin filter for empty origin")
+                artifacts.append(artifact)
+                
+    
+    """
     for artifact in the_artifacts:
         #if current_bidding_price is inside the limits of search
         if min_price <= artifact.current_bidding_price < max_price:
@@ -59,6 +71,6 @@ def filters(request):
                 #if there is not imput for the origin filter
                 if artifact_origin == '' :
                     artifacts.append(artifact)
-            
+    """
     #artifacts = Artifact.objects.filter(name__icontains=request.GET['q'])
     return render(request, "artifacts.html", {"artifacts": artifacts})
