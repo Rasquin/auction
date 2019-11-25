@@ -29,9 +29,11 @@ def filters(request):
             print("I am the price filter")
             if artifact.year in range(min_year, max_year):
                 print("I am the time filter")
-                #if artifact_origin == '':
-                   #print("I am the origin filter for empty origin")
-                artifacts.append(artifact)
+                if artifact_origin == '':
+                    print("I am the origin filter for empty origin")
+                    artifacts.append(artifact)
+                else:
+                    print("I am the origin filter")
                 
     
     """
