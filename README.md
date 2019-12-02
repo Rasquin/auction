@@ -168,8 +168,19 @@ Result of evaluation with JSHint:
 
 ## Credits
 ### Content
-The recipes were taken from the next places:
-- [Slow cooker chicken casserole](https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole)
+The artifacts information was taken from the next websites:
+- [Canvas  Place de la Bastille](https://fineart.ha.com/itm/edouard-leon-cortes-french-1882-1969-place-de-la-bastille-oil-on-canvas-21-1-2-x-18-inches-546-x-457-cm-signe/a/5436-68001.s?ic4=GalleryView-ShortDescription-071515)
+- [Gemstone: Chrome Tourmaline - 32.6 Cts.](https://fineart.ha.com/itm/nature-and-science/gemstone-chrome-tourmaline-326-cts-tanzania/p/5434-11086.s?ic4=GalleryView-ShortDescription-071515)
+- [Gemstones: Garnet (Set of 40)](https://fineart.ha.com/itm/nature-and-science/gemstones-garnet-set-of-40-various-localities-total-40-/p/5434-11105.s?ic4=GalleryView-ShortDescription-071515)
+- [A Superb Diquis Gold Figure](https://fineart.ha.com/itm/pre-columbian/a-superb-diquis-gold-figure/a/5424-70222.s?ic4=GalleryView-ShortDescription-071515)
+- [A Large Diquis Gold Frog Pendant](https://fineart.ha.com/itm/pre-columbian/a-large-diquis-gold-frog-pendant/a/5424-70224.s?ic4=GalleryView-ShortDescription-071515)
+- [A Tibetan Painted Wood Chest](https://fineart.ha.com/itm/asian-art/a-tibetan-painted-wood-chest-18th-19th-century-29-3-4-x-56-3-4-x-20-1-2-inches-756-x-1441-x-521-cm-/p/13152-28001.s?ic4=GalleryView-ShortDescription-071515)
+- [A Large Dogon Post for Meeting House, Toguna](https://fineart.ha.com/itm/tribal-art/a-large-dogon-post-for-meeting-house-toguna/a/5424-70254.s?ic4=GalleryView-Thumbnail-071515)
+- [Fourteen Louis XVI and Louis XVI-Style Giltwood and Upholstered Oval Back Side Chairs](https://fineart.ha.com/itm/furniture/fourteen-louis-xvi-and-louis-xvi-style-giltwood-and-upholstered-oval-back-side-chairs-circa-1775-and-later-33-x-22-x-21-in-total-/a/241950-21115.s?ic4=GalleryView-ShortDescription-071515)
+- [6 wood panel Jean Dunand](https://fineart.ha.com/itm/furniture/jean-dunand-french-1877-1942-two-figures-six-panel-screen-circa-1928-lacquered-wood-57-3-4-x/a/5378-79039.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
+- [The Largest Gold Nugget from the Western Hemisfere - Boot of Cortez](https://fineart.ha.com/itm/nature-and-science/the-largest-gold-nugget-from-the-western-hemisphere-boot-of-cortez/a/5000-48202.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
+- [Rose Quartz . "La Madona Rosa"](https://fineart.ha.com/itm/nature-and-science/rose-quartz-la-madona-rosa-lavra-berilo-branco-sapucaia-do-norte-galileia-doce-v/a/5110-87153.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
+- [The Fighting Pair - Allosaurus vs Stegosaurus](https://fineart.ha.com/itm/nature-and-science/the-fighting-pair-allosaurus-vs-stegosaurus/a/6061-49071.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
 
 ### Media
 The photos used in this project are labelled  for reuse.
@@ -179,3 +190,14 @@ The photos used in this project are labelled  for reuse.
 The brief for this project was given by Code Institute. I received inspiration for this project from my siter Aurora, who is studying to become a cook. I always wished that we had our own cookbook full of our crazy recipes that we invent during the weekends when we share on family.
 
 [![Build Status](https://travis-ci.org/Rasquin/auction.svg?branch=master)](https://travis-ci.org/Rasquin/auction)
+
+
+
+texto para cobdidiciones de la subastea
+Heritage Auctions strives to provide as much information as possible but encourages
+in-person inspection by bidders. Statements regarding the condition of objects are
+only for general guidance and should not be relied upon as complete statements of 
+fact, and do not constitute a representation, warranty or assumption of liability 
+by Heritage. Some condition issues may not be noted in the condition report but are
+apparent in the provided photos which are considered part of the condition report.
+Please note that we do not de-frame lots estimated at $1,000 or less and may not be able to provide additional details for lots valued under $500. All lots are sold "AS IS" under the Terms & Conditions of Auction.

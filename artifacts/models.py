@@ -16,6 +16,7 @@ class Artifact(models.Model):
     by_user = models.IntegerField(default=1)
     
     expert_value = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('9999999.99'))], max_digits=9, decimal_places=2)
+    minimun_bidding_price = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('9999999.99'))], max_digits=9, decimal_places=2)
     current_bidding_price = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('9999999.99'))], max_digits=9, decimal_places=2)
     buy_now_price = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('20000000.00'))], max_digits=10, decimal_places=2)
     price_to_pay = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('9999999.99'))], max_digits=9, decimal_places=2)
