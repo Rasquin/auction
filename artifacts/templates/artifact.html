@@ -94,12 +94,21 @@
                 <!-- Bidding-->
                 <div class="row text-center">
                     <!-- Current Bidding-->
+                    {% if artifact.current_bidding_price < artifact.minimun_bidding_price %}
+                    <div class="col-12">
+                        <p class="font-weight-bold">Minimun Bidding:</p>
+                    </div>
+                    <div class="col-12">
+                        <p>€ {{ artifact.minimun_bidding_price }}</p>
+                    </div>
+                    {% else %}
                     <div class="col-12">
                         <p class="font-weight-bold">Current Bidding:</p>
                     </div>
                     <div class="col-12">
                         <p>€ {{ artifact.current_bidding_price }} - {{ user.username }}</p>
                     </div>
+                    {% endif %}
                     <!-- Place New Bidding Form-->
                     <div class="col-12">
                         <form method="post" action="{% url 'place_bidding' artifact.pk %}">
