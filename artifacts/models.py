@@ -22,7 +22,8 @@ class Artifact(models.Model):
     price_to_pay = models.DecimalField(validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('9999999.99'))], max_digits=9, decimal_places=2)
     
     published_date = models.DateTimeField(blank=False, null=True, default=timezone.now)
-    bidding_time = models.DurationField(blank=False, null=True)
+    bidding_time = models.DateTimeField(blank=False, null=True)
+    #bidding_time = models.DurationField(blank=False, null=True)
     #bidding_time = models.IntegerField(blank=False, null=True)
     
     

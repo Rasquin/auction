@@ -5,8 +5,11 @@
 {% block page_title %}My Bidding{% endblock %}
 {% block content %}
 
+<!-- List of artifacts won at auction -->
 <div class="row row-flex">
-    {% for artifact in my_biddings %}
+    
+    <div class="col-12"> <h2 class="text-center">Artifacts Won at Auction</h2></div>
+    {% for artifact in auction_won_artifacts %}
     
     <!-- Each artifact container -->
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
@@ -19,7 +22,7 @@
 
             <!-- Artifact description -->
             <h3><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
-            <p class="artifact-description">{{ artifact.description|truncatewords:140 }}</p>
+            <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
 
             <!-- Price to pay -->
             <div class="row">
@@ -36,6 +39,41 @@
         <!-- Button to redirectfor payment-->
         <a href="{% url 'payment' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>To Pay</a>
 
+    </div>
+
+    {% endfor %}
+</div>
+
+<!-- List of artifacts were user is winning the auction  -->
+<div class="row row-flex">
+    
+    <div class="col-12"> <h2 class="text-center">Artifacts with the winning bidding</h2></div>
+    {% for artifact in my_biddings %}
+    
+    <!-- Each artifact container -->
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
+        
+        <!-- Artifact imagen-->
+        <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+        
+        <!-- Artifact name & description-->
+        <div class="caption">
+
+            <!-- Artifact description -->
+            <h3><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
+            <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+
+            <!-- Artifact Current bidding price -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="font-weight-bold">Current Bidding:</p>
+                </div>
+                <div class="col-12">
+                    <p>€ {{ artifact.current_bidding_price }}</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     {% endfor %}
