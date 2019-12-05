@@ -2,6 +2,11 @@ body {
     background-color: #936b4e;
 }
 
+a {
+  color: #4b2002;
+  text-decoration: none;
+}
+
 
 .container-general{
   background-color: beige;
@@ -9,50 +14,51 @@ body {
   margin: 0px 10px;
 }
 
+.artifacts-container{
+  padding: 10px;
+}
+
+.panel-body{
+    height: 100%;
+    border: 5px double #F4A460;
+}
+
 .col-auto {
   padding: 10px;
 }
 
 .border-bottom-double {
-    border-bottom: 10px double #936b4e!important;
+  border-bottom: 10px double #936b4e!important;
 }
 
 .artifacts-image {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  margin: 15px auto;
 }
 
 .artifact-image {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 330px;
-    margin: 0 auto;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 330px;
+  margin: 20px auto;
 }
 
 .row-flex {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 
-.panel-body {
-    height: 100%;
-    border: 1px solid #ddd;
-}
-
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
-}
 
 .artifact-description {
-    min-height: 40px;
+  min-height: 40px;
+  margin: 15px;
 }
 /*----------------------slider*/
 section.range-slider {

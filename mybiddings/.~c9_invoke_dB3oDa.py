@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.utils import timezone
+#from datetime import datetime, timedelta
 from artifacts.models import Artifact
 
 # Create your views here.
@@ -17,6 +18,8 @@ def view_my_biddings(request):
     
     for artifact in artifacts:
         if timezone.now() >  artifact.end_date:
+        #if datetime.now() >=  datetime.now() + timedelta(hours=10):
+        #if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.bidding_time):
            if current_user_id == artifact.by_user:
                artifact.price_to_pay == artifact.current_bidding_price
                auction_won_artifacts.append(artifact)

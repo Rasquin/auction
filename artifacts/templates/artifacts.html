@@ -5,13 +5,13 @@
 {% block content %}
 <div class="row row-flex">
     {% for artifact in artifacts %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+        <div class="col-sm-12 col-md-4 artifacts-container">
             <div class="panel-body">
                 <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
 
-                <h3><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
-                <p class="artifact-description">{{ artifact.description|truncatewords:140 }}</p>
-                <p> Current bid € {{ artifact.current_bidding_price }}</p>
+                <h3 class="text-center"><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
+                <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+                <p class="text-center font-weight-bold"> Current bid € {{ artifact.current_bidding_price }}</p>
 
                 
             </div>

@@ -11,7 +11,7 @@ class TestArtifactModel(TestCase):
     
    
     def test_can_create_an_artifact(self):
-        artifact = Artifact(name="A name", origin="A culture", age="An age", description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact", initial_price=100.23, bidding_price=120.45, buying_price=200.00, published_date=timezone.now, bidding_time=200, on_bidding=True)
+        artifact = Artifact(name="A name", origin="A culture", age="An age", description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact", initial_price=100.23, bidding_price=120.45, buying_price=200.00, published_date=timezone.now, end_date=timezone.now, on_bidding=True)
         self.assertEqual(artifact.name, "A name")
         self.assertEqual(artifact.origin, "A culture")
         self.assertEqual(artifact.age, "An age")
@@ -22,7 +22,7 @@ class TestArtifactModel(TestCase):
         self.assertEqual(artifact.bidding_price, 120.45)
         self.assertEqual(artifact.buying_price, 200.00)
         self.assertEqual(artifact.published_date, timezone.now)
-        self.assertEqual(artifact.bidding_time, 200)
+        self.assertEqual(artifact.end_date, timezone.now)
         self.assertTrue(artifact.on_bidding)
         
     
