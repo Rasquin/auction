@@ -14,29 +14,19 @@ def get_all_artifacts(request):
     artifacts = []
     
     for artifact in the_artifacts:
-        if timezone.now() <  artifact.end_date:
+        if artifact.published_date <= timezone.now() <  artifact.end_date:
             artifact.on_bidding = True
             artifact.save()
             artifacts.append(artifact)
+            print(timezone.now())
+            print(artifact.end_date)
         else:
             artifact.on_bidding = False
             artifact.save()
 
     return render(request, "artifacts.html", {"artifacts": artifacts})
 
-"""def bidding_status(request, id):
-    """
-    #Define if an aritfact is or not for auction
-    
-"""
-    artifact = get_object_or_404(Artifact, pk=id)
-    if datetime.datetime.now() <= artifact.published_date + datetime.timedelta(hours=artifact.end_date):
-        artifact.on_bidding = True
-    else:
-        artifact.on_bidding = False
-    return redirect(get_all_artifacts)
-"""
-    
+
 def get_one_artifact(request, pk):
     """
     Get the info of one particular artifact

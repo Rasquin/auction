@@ -11,16 +11,18 @@ class TestArtifactModel(TestCase):
     
    
     def test_can_create_an_artifact(self):
-        artifact = Artifact(name="A name", origin="A culture", age="An age", description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact", initial_price=100.23, bidding_price=120.45, buying_price=200.00, published_date=timezone.now, end_date=timezone.now, on_bidding=True)
+        artifact = Artifact(name="A name", origin="A culture", year=500, description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact", expert_value=10, minimun_bidding_price=2.50, current_bidding_price=5.00, buy_now_price=5.00, price_to_pay=5.00, published_date=timezone.now, end_date=timezone.now, on_bidding=True)
         self.assertEqual(artifact.name, "A name")
         self.assertEqual(artifact.origin, "A culture")
-        self.assertEqual(artifact.age, "An age")
+        self.assertEqual(artifact.year, 500)
         self.assertEqual(artifact.description, "A description")
         self.assertEqual(artifact.crafting, "How was the artifact made")
         self.assertEqual(artifact.trajectory, "Interesting events regarding this artifact")
-        self.assertEqual(artifact.initial_price, 100.23)
-        self.assertEqual(artifact.bidding_price, 120.45)
-        self.assertEqual(artifact.buying_price, 200.00)
+        self.assertEqual(artifact.expert_value, 10.00)
+        self.assertEqual(artifact.minimun_bidding_price, 2.50)
+        self.assertEqual(artifact.current_bidding_price, 5.00)
+        self.assertEqual(artifact.buy_now_price, 5.00)
+        self.assertEqual(artifact.price_to_pay, 5.00)
         self.assertEqual(artifact.published_date, timezone.now)
         self.assertEqual(artifact.end_date, timezone.now)
         self.assertTrue(artifact.on_bidding)
@@ -28,10 +30,9 @@ class TestArtifactModel(TestCase):
     
 
     def test_str(self):
-        artifact = Artifact(name="A name", origin="A culture", age="An age", description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact" )
+        artifact = Artifact(name="A name", origin="A culture", description="A description", crafting="How was the artifact made", trajectory="Interesting events regarding this artifact" )
         self.assertEqual(str(artifact.name), "A name")
         self.assertEqual(str(artifact.origin), "A culture")
-        self.assertEqual(str(artifact.age), "An age")
         self.assertEqual(str(artifact.description), "A description")
         self.assertEqual(str(artifact.crafting), "How was the artifact made")
         self.assertEqual(str(artifact.trajectory), "Interesting events regarding this artifact")
