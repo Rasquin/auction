@@ -12,7 +12,7 @@
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
-{% block page_title %}Payment{% endblock %}
+{% block page_title %}Checkout{% endblock %}
 
 {% block content %}
 <div class="row row-flex">
@@ -33,7 +33,7 @@
 </div>
 
 
-<form role="form" method="post" id="payment-form" action="{% url 'payment' %}">
+<form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
     <legend>Payment Details</legend>
 
     <div id="credit-card-errors" style="display: none;">

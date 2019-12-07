@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AuctionOrder, OrderLineItem
+from .models import Order, OrderLineItem
 
 
 class OrderLineAdminInline(admin.TabularInline):
@@ -10,4 +10,4 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineAdminInline, )
 
 
-admin.site.register(AuctionOrder, OrderAdmin)
+admin.site.register(Order, OrderAdmin)

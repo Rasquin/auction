@@ -1,5 +1,5 @@
 from django import forms
-from .models import AuctionOrder
+from .models import Order
 
 
 class MakePaymentForm(forms.Form):
@@ -17,7 +17,7 @@ class MakePaymentForm(forms.Form):
 class OrderForm(forms.ModelForm):
 
     class Meta:
-        model = AuctionOrder
+        model = Order
         fields = (
             'full_name', 'phone_number', 'country', 'postcode',
             'town_or_city', 'street_address1', 'street_address2'

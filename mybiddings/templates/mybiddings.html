@@ -33,10 +33,10 @@
                     <p>€ {{ artifact.price_to_pay }}</p>
                 </div>
             </div>
-            <!-- Button to redirectfor payment-->
+            <!-- Button to redirect for payment-->
             <div class="row">
                 <div class="col-12">
-                    <a href="{% url 'payment' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>To Pay</a>
+                    <a href="{% url 'checkout' pk=artifact.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Pay Now</a>
                 </div>
             </div>
         </div>

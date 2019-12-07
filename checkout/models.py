@@ -2,7 +2,7 @@ from django.db import models
 from artifacts.models import Artifact
 
 # Create your models here.
-class AuctionOrder(models.Model):
+class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
@@ -18,10 +18,11 @@ class AuctionOrder(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(AuctionOrder, null=False)
+    order = models.ForeignKey(Order, null=False)
     artifact = models.ForeignKey(Artifact, null=False)
+    quantity = models.IntegerField(blank=False)
     
 
     def __str__(self):
-        return "{0} @ {1}".format(
-            self.artifact.name, self.artifact.price)
+        return  "{0} {1} @ {2}".format(
+            self.quantity, self.artifact.name, self.artifact.price)
