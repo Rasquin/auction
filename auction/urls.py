@@ -24,6 +24,7 @@ from bidding import urls as urls_bidding
 from mybiddings import urls as urls_mybiddings
 from search import urls as urls_search
 from checkout import urls as urls_checkout
+from about import urls as urls_about
 
 
 urlpatterns = [
@@ -35,5 +36,6 @@ urlpatterns = [
     url(r'^mybiddings/', include(urls_mybiddings)),
     url(r'^search/', include(urls_search)),
     url(r'^checkout/', include(urls_checkout)),
+    url(r'^about/', include(urls_about)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

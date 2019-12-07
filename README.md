@@ -167,6 +167,7 @@ Result of evaluation with JSHint:
 
 ## Credits
 ### Content
+The Auction Conditions content was taken from [Heritage Auctions](https://www.ha.com/)
 The artifacts information was taken from the next websites:
 - [Canvas  Place de la Bastille](https://fineart.ha.com/itm/edouard-leon-cortes-french-1882-1969-place-de-la-bastille-oil-on-canvas-21-1-2-x-18-inches-546-x-457-cm-signe/a/5436-68001.s?ic4=GalleryView-ShortDescription-071515)
 - [Gemstone: Chrome Tourmaline - 32.6 Cts.](https://fineart.ha.com/itm/nature-and-science/gemstone-chrome-tourmaline-326-cts-tanzania/p/5434-11086.s?ic4=GalleryView-ShortDescription-071515)

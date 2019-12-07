@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mybiddings',
     'checkout',
     'search',
+    'about',
 ]
 
 MIDDLEWARE = [

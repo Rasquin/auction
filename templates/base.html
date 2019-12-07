@@ -45,7 +45,7 @@
                     <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">
@@ -105,76 +105,7 @@
                 </form>
     
                 <!-- Filters -->
-                
-                <form action="{% url 'filters' %}" method="get" class="col-12">
-                    {% csrf_token %}
-                    
-                    <!-- Price Filter -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12 col-md-2">
-                                <p>
-                                    <label for="amount">Price range:</label>
-    
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-9">
-    
-                                <section class="range-slider-price range-slider">
-    
-                                    <span class="rangePriceValues rangeValues"></span>
-                                    <input value="0" min="0" max="10000000" step="2000" type="range" name="min_price">
-                                    <input value="10000000" min="0" max="10000000" step="2000" type="range" name="max_price">
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Year Filter -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12 col-md-2">
-                                <p>
-                                    <label for="amount">Year:</label>
-    
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-9">
-    
-                                <section class="range-slider-year range-slider">
-    
-                                    <span class="rangeYearValues"></span>
-                                    <input value="-2000" min="-2000" max="2020" step="20" type="range" name="min_year">
-                                    <input value="2020" min="-2000" max="2020" step="20" type="range" name="max_year">
-                                </section>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- Origin Filter -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12 col-md-2">
-                                <p>
-                                    <label for="origin">Culture & Origin:</label>
-    
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin" >
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Filter Button -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12">
-                                <p class="text-center">
-                                    <button class="btn btn-primary" type="search">Filter</button>
-                                </p>
-                            </div>
-                    </div>
-                    </div>
-                    
-                </form>
+                {% block filter %}{% endblock %}
     
             </div>
         </div>
