@@ -14,13 +14,16 @@
         </div>
         
         
-        <!-- Artifact Name & Published date-->
+        <!-- Artifact Name & Auction dates-->
         <div class="row text-center">
             <div class="col-12">
                 <h2>{{ artifact.name }}</h2>
             </div>
             <div class="col-12">
                 <p>Bidding started on {{ artifact.published_date }}</p>
+            </div>
+            <div class="col-12">
+                <p>Bidding finish on {{ artifact.end_date }}</p>
             </div>
         </div>
         
@@ -29,6 +32,15 @@
             
             <!-- Info about artifact-->
             <div class="col-12 col-md-9">
+                <!-- Artifact Lote-->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="font-weight-bold">Lote number:</p>
+                    </div>
+                    <div class="col-12">
+                        <p>{{ artifact.id }}</p>
+                    </div>
+                </div>
                 <!-- Artifact Origin-->
                 <div class="row">
                     <div class="col-12">
@@ -143,7 +155,7 @@
                     </div>
                     <!-- Buying form-->
                     <div class="col-12">
-                        <a class="btn btn-primary" href="{% url 'checkout' %}" role="button">Buy Now !!!</a>
+                        <a class="btn btn-primary" href="{% url 'checkout' pk=artifact.pk %}" role="button">Buy Now !!!</a>
                     </div>
                 </div>
                 

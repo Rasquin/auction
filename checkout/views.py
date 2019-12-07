@@ -14,6 +14,8 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request, pk):
+    artifact = get_object_or_404(Artifact, pk=pk)
+    print(artifact.pk)
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -23,7 +25,7 @@ def checkout(request, pk):
             order.date = timezone.now()
             order.save()
             
-            artifact = get_object_or_404(Artifact, pk=id)
+            
             total = artifact.price_to_pay
             order_line_item = OrderLineItem(
                     order=order,
@@ -47,7 +49,8 @@ def checkout(request, pk):
                 messages.error(request, "You have successfully paid")
                 artifact.paid = True
                 artifact.save()
-                return redirect(reverse('view_my_biddings'))
+                #return redirect(reverse('view_my_biddings'))
+                return redirect(reverse('artifacts'))
             else:
                 messages.error(request, "Unable to take payment")
         else:

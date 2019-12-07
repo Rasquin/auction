@@ -125,11 +125,10 @@ print (index,category['category_name'])
 
 
 Problems unsolved:
-- When adding or editing a recipe, if 'none' option of allergens is selected, the other options can still be selected.
-- The form is not completely validated before submitting. The user can submit the form without selecting any allergens.
+- Reverse for 'checkout' with no arguments not found. 1 pattern(s) tried: ['checkout/(?P<pk>\\d+)/$']. Solved by intrucing the respective pk value together with the checkout url
 
 Problems solved:
-- TypeError: 'NoneType' object is not iterable. Solved through making sure the the attribute has no null value, so the object is iterable.
+- local variable 'artifact' referenced before assignment. Solved by declaring the variable at the beginning of the view and not inside the if.
 - AttributeError: 'dict' object has no attribute 'views' Solved by changing the method to access the dict attribute. Example: Intead of dict.attribute use 
 dict['attribute']
 - AttributeError: 'str' object has no attribute 'int'. Solved by converting the string to integer through the  python int() function
