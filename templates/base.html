@@ -70,15 +70,8 @@
     </nav>
     
     <!-- Messages area -->
-    {% if messages %}
-    <div class="alert alert-success">
-            <div class="messages">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
+    {% block messages %} {% endblock %}
+    
     
     <!-- Content area -->
     <div class="container-general">

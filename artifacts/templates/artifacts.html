@@ -2,6 +2,18 @@
 
 {% block page_title %}Monica's Auction{% endblock %}
 
+{% block messages %} 
+{% if messages %}
+    <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
 {% block filter %}
 <form action="{% url 'filters' %}" method="get" class="col-12">
     {% csrf_token %}

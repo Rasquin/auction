@@ -125,17 +125,13 @@ print (index,category['category_name'])
 
 
 Problems unsolved:
-- Reverse for 'checkout' with no arguments not found. 1 pattern(s) tried: ['checkout/(?P<pk>\\d+)/$']. Solved by intrucing the respective pk value together with the checkout url
-- AttributeError: 'str' object has no attribute 'fields'. Solved by making sure that when passing multiple variables through the return statements so that they're accessible from the template,they were all in the same dictionary.
+- origin filter
 
 Problems solved:
 - local variable 'artifact' referenced before assignment. Solved by declaring the variable at the beginning of the view and not inside the if.
-- AttributeError: 'dict' object has no attribute 'views' Solved by changing the method to access the dict attribute. Example: Intead of dict.attribute use 
-dict['attribute']
-- AttributeError: 'str' object has no attribute 'int'. Solved by converting the string to integer through the  python int() function
-- TypeError: must be str, not int. Solved through checking the type of att of the dict and converting to int what was needed.
-- TypeError: if no direction is specified, key_or_list must be an instance of list. Solved through changing the format of the sorting from sort({"attribute": 1}) to sort([("attribute", 1)])
-- When editing the <textarea> didn't show the content. I was using wrong the sintaxis. Solved through changing <textarea value="the value"></textarea> to <textarea>the value </textarea>
+- Reverse for 'checkout' with no arguments not found. 1 pattern(s) tried: ['checkout/(?P<pk>\\d+)/$']. Solved by intrucing the respective pk value together with the checkout url
+- AttributeError: 'str' object has no attribute 'fields'. Solved by making sure that when passing multiple variables through the return statements so that they're accessible from the template,they were all in the same dictionary.
+- Stripe was unable to pay with this car. Solved throughmaking sure the scripts for stripe were after the jquery scripts.
 
 Problems found by the code validator and solved:
 - CSS: no errors

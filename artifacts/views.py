@@ -54,7 +54,7 @@ def get_one_artifact(request, pk):
         if the_artifact.by_user == user.id:
             the_user = user
     
-    return render(request, "artifact.html", {"artifact": the_artifact}, {"user": the_user})
+    return render(request, "artifact.html", {"artifact": the_artifact, "user": the_user})
     
 
 def get_buy_now_price (request, id):
