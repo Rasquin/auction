@@ -24,6 +24,8 @@
             <h3 ><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
             <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
     
+            <!-- Status of payment of the artifact -->
+            {% if artifact.paid == False %}
             <!-- Price to pay -->
             <div class="row">
                 <div class="col-12">
@@ -39,6 +41,16 @@
                     <a href="{% url 'checkout' pk=artifact.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Pay Now</a>
                 </div>
             </div>
+            {% else %}
+            <!-- Paid Price -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="font-weight-bold">Paid </p>
+                </div>
+            </div>
+            {% endif %}
+            
+            
         </div>
         
         
@@ -48,40 +60,4 @@
     {% endfor %}
 </div>
 
-<!-- List of artifacts were user is winning the auction  -->
-<!--
-<div class="row row-flex">
-    
-    <div class="col-12"> <h2 class="text-center">Artifacts with the winning bidding</h2></div>
-    {% for artifact in my_biddings %}
-    
-    <!-- Each artifact container -->
-<!--
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
-        
-        <!-- Artifact imagen-->
-        <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
-        
-        <!-- Artifact name & description-->
-        <div class="caption">
-
-            <!-- Artifact description -->
-            <h3><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
-            <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
-
-            <!-- Artifact Current bidding price -->
-            <div class="row">
-                <div class="col-12">
-                    <p class="font-weight-bold">Current Bidding:</p>
-                </div>
-                <div class="col-12">
-                    <p>€ {{ artifact.current_bidding_price }}</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-<!--    {% endfor %}
-</div>  -->
 {% endblock %}
