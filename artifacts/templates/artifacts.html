@@ -81,7 +81,12 @@
 
                 <h3 class="text-center"><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
                 <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+                {% if artifact.current_bidding_price < artifact.minimun_bidding_price %}
+                <p class="text-center font-weight-bold"> Minimun bid € {{ artifact.minimun_bidding_price }}</p>
+                {% else %}
                 <p class="text-center font-weight-bold"> Current bid € {{ artifact.current_bidding_price }}</p>
+                {% endif %}
+                
 
                 
             </div>

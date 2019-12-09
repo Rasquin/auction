@@ -49,7 +49,6 @@ def checkout(request, pk):
                 messages.error(request, "You have successfully paid")
                 artifact.paid = True
                 artifact.save()
-                #return redirect(reverse('view_my_biddings'))
                 return redirect(reverse('artifacts'))
             else:
                 messages.error(request, "Unable to take payment")
@@ -60,19 +59,4 @@ def checkout(request, pk):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    #return render(request, "checkout.html", {"artifact": artifact}, {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
     return render(request, "checkout.html", {"artifact": artifact, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
-    
-    """
-            mybidding = request.session.get('mybidding')
-            total = 0
-            for id  in mybidding:
-                artifact = get_object_or_404(Artifact, pk=id)
-                total += artifact.price_to_pay
-                order_line_item = OrderLineItem(
-                    order=auction_order,
-                    artifact=artifact,
-                   
-                )
-                order_line_item.save()
-"""
