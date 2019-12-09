@@ -126,6 +126,7 @@ print (index,category['category_name'])
 
 Problems unsolved:
 - Reverse for 'checkout' with no arguments not found. 1 pattern(s) tried: ['checkout/(?P<pk>\\d+)/$']. Solved by intrucing the respective pk value together with the checkout url
+- AttributeError: 'str' object has no attribute 'fields'. Solved by making sure that when passing multiple variables through the return statements so that they're accessible from the template,they were all in the same dictionary.
 
 Problems solved:
 - local variable 'artifact' referenced before assignment. Solved by declaring the variable at the beginning of the view and not inside the if.

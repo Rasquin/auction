@@ -60,7 +60,8 @@ def checkout(request, pk):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {"artifact": artifact}, {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    #return render(request, "checkout.html", {"artifact": artifact}, {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {"artifact": artifact, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
     
     """
             mybidding = request.session.get('mybidding')

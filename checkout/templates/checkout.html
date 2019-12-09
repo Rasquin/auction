@@ -2,16 +2,6 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
-{% block head_js %}
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-    //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
-    //]]>
-</script>
-<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
-
 {% block page_title %}Checkout{% endblock %}
 
 {% block content %}
@@ -53,4 +43,14 @@
         <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
 </form>
+{% endblock %}
+
+{% block head_js %}
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+    //]]>
+</script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
