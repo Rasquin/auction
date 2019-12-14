@@ -7,6 +7,9 @@ a {
   text-decoration: none;
 }
 
+.white{
+  background-color: white;
+}
 
 .container-general{
   background-color: beige;
@@ -14,6 +17,10 @@ a {
   margin: 0px 10px;
 }
 
+.filter{
+  background-color: #eee;
+  display: flex;
+}
 .artifacts-container{
   padding: 10px;
 }

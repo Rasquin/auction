@@ -73,7 +73,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div  class="row justify-content-center">
     <div class="col-10">
         
         <!-- Artifact Image-->
@@ -98,7 +98,7 @@
         </div>
         
         <!-- Artifact box details -->
-        <div class="row">
+        <div  class="row">
             
             <!-- Info about artifact-->
             <div class="col-12 col-md-9">
@@ -243,22 +243,9 @@
                         </div>
                     {% endif %}
                     
-                
                 </div>
-                <!-- Bidding related message area-->
-                {% if messages %}
-                <div class="alert alert-success">
-                    <div class="messages">
-                        {% for message in messages %} {{ message }} {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
             </div>
         </div>
-        
-        
-        
-        
     </div>
 </div>
 {% endblock %}

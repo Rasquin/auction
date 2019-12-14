@@ -23,19 +23,20 @@ def filters(request):
     max_year =  int(request.GET.get('max_year'))
     
     artifact_origin = request.GET.get('artifact_origin')
+    print(artifact_origin)
     
     for artifact in the_artifacts:
-        print("There is an artifact")
-        #if artifact.current_bidding_price in numpy.arange(min_price, max_price):
+        # filter the price
         if min_price <= artifact.current_bidding_price < max_price:
-            print("I am the price filter")
+            #filter the year/age
             if artifact.year in range(min_year, max_year):
-                print("I am the time filter")
+                #filter the origin
                 if artifact_origin == '':
-                    print("I am the origin filter for empty origin")
                     artifacts.append(artifact)
                 else:
-                    print("I am the origin filter")
-                    artifacts = Artifact.objects.filter(origin__search='artifact_origin') 
+                    artifacts = Artifact.objects.filter(origin__icontains=artifact_origin)
 
     return render(request, "artifacts.html", {"artifacts": artifacts})
+    
+    
+    

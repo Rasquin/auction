@@ -13,10 +13,7 @@ def place_bidding(request, id):
     
     the_artifact = get_object_or_404(Artifact, pk=id)
     new_bidding =  Decimal(request.POST.get('new_bidding'))
-    
-   # if the_artifact.current_bidding_price < the_artifact.minimun_bidding_price:
-    #    messages.error(request, "Your bid is not high enough")
-    #else:
+
     if the_artifact.current_bidding_price >= new_bidding:
         messages.error(request, "Your bid is not high enough")
             
