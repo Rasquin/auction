@@ -1,5 +1,5 @@
 body {
-    background-color: #936b4e;
+    background-color: white;
 }
 
 a {
@@ -7,27 +7,31 @@ a {
   text-decoration: none;
 }
 
-.white{
-  background-color: white;
+.bg-light {
+  background-color: #a5bfd8!important;
 }
 
 .container-general{
-  background-color: beige;
+  background-color: #00BFFF;
   padding: 10px;
-  margin: 0px 10px;
+  margin: 0;
 }
 
-.filter{
-  background-color: #eee;
+.row-flex {
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  background-color: #eee;
 }
 .artifacts-container{
   padding: 10px;
 }
 
 .panel-body{
-    height: 100%;
-    border: 5px double #F4A460;
+  background-color: white;
+  height: 100%;
+  border: 5px double #073e7a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .col-auto {
@@ -54,12 +58,6 @@ a {
   width: 100%;
   height: 500px;
   margin: 20px auto;
-}
-
-.row-flex {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 30px;
 }
 
 

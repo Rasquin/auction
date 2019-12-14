@@ -80,7 +80,7 @@
         <form action="{% url 'search_by_name' %}" method="get" class="form-inline ">
             {% csrf_token %}
             <input type="text" class="form-control" id="artifact_name" name="artifact_name" required placeholder="Name of artifact">
-            <button class="btn btn-outline-success  my-2 my-sm-0" type="search">Search</button>
+            <button class="btn btn-outline-primary  my-2 my-sm-0" type="search">Search</button>
         </form>
     </nav>
     
@@ -91,79 +91,53 @@
         <form action="{% url 'filters' %}" method="get" class="form-inline">
             {% csrf_token %}
             <!-- Price Filter -->
-            <div class="form-group" >
-                <div class="col-12 col-md-4">
-                    <p><label for="amount">Price range:</label></p>
-                </div>
-                <div class="col-12 col-md-8">
+            <div class="form-group mb-2" >
+                <label for="amount">Price range:</label>
+                
+                <div class="col-11">
                     <section class="range-slider-price range-slider">
                         <span class="rangePriceValues rangeValues"></span>
-                        <input value="0" min="0" max="10000000" step="2000" type="range" name="min_price">
-                        <input value="10000000" min="0" max="10000000" step="2000" type="range" name="max_price">
+                        <input value="0" min="0" max="10000000" step="5000" type="range" name="min_price">
+                        <input value="10000000" min="0" max="10000000" step="5000" type="range" name="max_price">
                     </section>
                 </div>
             </div>
             <!-- Year Filter -->
-            <div class="form-group" >
-                <label for="amount">Year:</label>
+            <div class="form-group mb-2" >
+                <label  for="amount">Year:</label>
                 
-                <div class="col-12 col-md-8">
+                <div class="col-11">
                     <section class="range-slider-year range-slider">
                     
                         <span class="rangeYearValues"></span>
-                        <input value="-2000" min="-2000" max="2020" step="20" type="range" name="min_year">
-                        <input value="2020" min="-2000" max="2020" step="20" type="range" name="max_year">
+                        <input value="-2000" min="-2000" max="2020" step="200" type="range" name="min_year">
+                        <input value="2020" min="-2000" max="2020" step="200" type="range" name="max_year">
                     </section>
                 </div>
             </div>
             <!-- Origin Filter -->
-            <div class="form-group" >
-                
-                    <label for="origin">Culture & Origin:</label>
-                
-                
-                    <input type="text" class="form-control" id="artifact_origin" name="artifact_origin">
-               
+            <div class="form-group mb-2">
+                <label for="origin">Culture & Origin:</label>
+                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin">
             </div>
             <!-- Filter Button -->
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-12 col-lg-1">
-                        <p class="text-center">
-                            <button class="btn btn-primary" type="search">Filter</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            
+                <button class="btn btn-primary mb-2" type="search">Filter</button>
+            
         
         </form>
     </nav>
-        
-    <nav class="navbar navbar-light bg-light justify-content-center">    <form class="form-inline">
-            <div class="form-group mb-2">
-                <label for="staticEmail2" class="sr-only">Email</label>
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
-        </form>
-   </nav>
-
-    {% block filter %}{% endblock %}
   
     <!-- Messages area -->
-{% if messages %}
-<div class="alert alert-success">
-        <div class="messages">
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
+    {% if messages %}
+    <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-{% endif %}
+    {% endif %}
 
     <!-- Content area -->
     <div class="container-general">
