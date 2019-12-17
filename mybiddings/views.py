@@ -23,6 +23,7 @@ def view_my_biddings(request):
         else:
             if current_user_id == artifact.by_user:
                my_biddings.append(artifact)
+               print(my_biddings)
 
     return render(request, "mybiddings.html", {"auction_won_artifacts": auction_won_artifacts}, {"my_biddings": my_biddings})
     

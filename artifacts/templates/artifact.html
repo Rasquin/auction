@@ -174,9 +174,9 @@
                     </div>
                 </div>
                 <!-- Bidding-->
-                <div class="row text-center">
-                    <!-- Artifact status -->
-                    {% if artifact.paid == False %}
+                <div class="row text-center  ">
+                    <!-- Artifact status  -->
+                    {% if artifact.on_bidding == True %}
                         <!-- On Auction >> Current Bidding-->
                         
                         {% if artifact.current_bidding_price < artifact.minimun_bidding_price %}

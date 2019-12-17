@@ -49,8 +49,9 @@ def get_one_artifact(request, pk):
         the_artifact.buy_now_price = round(Decimal(1.5)*the_artifact.current_bidding_price,2)
         #messages.error(request, "buying price 1.5 of current bid")
     
+    the_artifact.price_to_pay = the_artifact.buy_now_price
     the_artifact.save()
-    
+   
 
     for user in users:
         if the_artifact.by_user == user.id:
