@@ -12,7 +12,7 @@ a {
 }
 
 .container-general{
-  background-color: #00BFFF;
+  background-color: #5d9bde;
   padding: 10px;
   margin: 0;
 }
@@ -21,7 +21,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
-  background-color: #eee;
 }
 .artifacts-container{
   padding: 10px;

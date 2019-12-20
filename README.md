@@ -1,5 +1,8 @@
 # MONICA'S AUCTION - project IV
 
+DATABASE_URL
+postgres://rogsqwpgjvtrfi:d51ba9fe70746736f165e5407e34ace368845d062d3992730526b5e82d295071@ec2-176-34-184-174.eu-west-1.compute.amazonaws.com:5432/ddq66gro86o49o
+
 Full Stack Frameworks with Django Milestone Project. This project consist of a full-stack site based on centrally-owned dataset  for an auction place. This site provides an  authentication mechanism for users, so that they will be able to find, bid and purchase antique artifacts. 
 
 This project is deployed at [Heroku](https://monica-auction.herokuapp.com/)
@@ -7,10 +10,9 @@ This project is deployed at [Heroku](https://monica-auction.herokuapp.com/)
 
 ## UX
 This website has been designed to offer the users a nice experience at acquiring antique artifacts of their interest. This auction site is targeting antique items collector users.
-The visitors of this website will be able to look for artifacts based on price, age and origin. Once selected the desired criteria, a list of artifacts that fit the search criteria will be displayed. For each item, the user will be able to see a picture, the name and the item price.
+The visitors of this website will be able to look for artifacts based on price, age and origin. Also he/she could directly by the name of the artifact. Once selected the desired criteria, a list of artifacts that fit the search criteria will be displayed. For each item, the user will be able to see a picture, the name and the item price.
 After clicking on an artifact, the user will be redirected to a page where he/she would be able to know more about the object ( name, price, age, description, crafting and trajectory). If the user is interested on acquiring this item, he can bid on it or purchase it immediately for a higher price.
 In order to purchase or bid, the user has to be registered and logged in.
-Once the user has bought his desired products, while authenticated, he can write a review about his experience in the site. 
 The owner of the site will be able to earn money through each purchase.
 The user will be able to pay with credit card.
 
@@ -21,7 +23,7 @@ The user will be able to pay with credit card.
 
 - As user, I may have a budget to expend, so that I am interested in looking for my item based on price. Then the side should filter items by price also.
 
-- As a user, I may be interested in an artifact; I may find interesting how it was made, where it comes from, how old it is. Then the site should provide a picture and information about the history, origin, age, crafting and trajectory of each artifact.
+- As a user, I could like an artifact; I may find interesting how it was made, where it comes from, how old it is. Then the site should provide a picture and information about the history, origin, age, crafting and trajectory of each artifact.
 
 - As a user, I may want to bid on an item. Then the site should provide a bidding section for each artifact, besides the user has to be authenticated before being able to bid.
 
@@ -29,31 +31,23 @@ The user will be able to pay with credit card.
 
 - As a user, I would like to pay for my purchased item, and feel secure that my card data won’t be stolen. Then the side should provide a secure payment mechanism that doesn’t expose its users to insecure situations.
 
-- As a user, I could be interested in giving a feedback about my experience at participating at this auction site. Then the site should provide an area to display messages of users who completed their purchases process. 
- 
-- As a user, I would like to follow up this website through social media (twitter or instagram) so I can be updated of new recipes or to know what the community is doing. Then the website should contain link that allow the user to check its available social media.
 
 ## Features
 
-This project works with databases collections (mongoDB Atlas). The backend of the 
-project is centered in the app.py, from there are made all the routes of the priject.
-The principal template of this project is the cookbook.html.  All the general html
-code is donde in the base.html template, this one is shared by all the other templates
-through the use of block-contents.
-
+This project works with sqlite3 database. The pricipal folder of the project is the auction folder, from there all the apps are tied though the urls and and registered in the settings.
+This project use a base template that is inherited to the others templates that result from the  different apps. 
 
 ### Existing Features
 
-**Apps** (backend) Here are imported all the neccesary libraries in order to make the 
-caractheristics of the project work. There are a total of 24 routes, together they 
-help to render templates, redirect to other template of make calculus of variables.
-- Accounts app
-- Artifacts app
-- Bidding app
-- django_forms_bootstrap3.1.0
-- Routes: 
-   * '/cookbook': Home website
-  
+**Apps** (backend) Each app was built in order to control a feature of the proyject.
+- Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates.
+- Artifacts app: Here is the items list for the auction. It has the artifact model. It contains 3 views and 2 templates. In the artifacts.html the user can see a list of all the artifacts with their price, a small description; if the artifact is on auction the user can see the current/minumun bidding and if the artifact is not on aution it will appear as sold. In the artifact.html the user can see all the characteristics of the respective artifact as well as the state of the bidding.
+- Bidding app: Here is where the bidding proccess happens.It has one view with logging of user required. It has no templates. Each time a new bidding is placed, the inmediate buying price is updated. The bidding has to be bigger than the minimun bidding price or than the current bidding.
+- Mybiddings app: In this app the user can see the artifactcs that he has won through the auction. He/she can also check if the artifact is paid or not. One view that renders to mybiddings.html
+- Checkout app: When the user is ready to pay, the proccess is done through this app. Here the user has to fill a form up with his/her personal data and the respective credicard. This app works with the help of the stripe API. It has only 1 view with loggin required and render to the checkout.html
+- Search app: Here the user can look for something special. He/she can search directly by the name of an artifact or can filter them by price, year or origin. It contains 2 views, one for each method (search or filter). It gives its results in the artifactcs.html
+- About app: It is an app where some backgroung info about the site is given to the user. It has a view that render to about.html 
+
 **templates** There are 13 html templates. Each of them displays a different functionality
 of this website.
 - base: it has all the rehusable html that is share to all the other templates. Here 
@@ -83,7 +77,8 @@ to make the add/ edit recipe form works.
 - Method Add: jQuery that allow user to add a new steep in to the method.
 
 ### Features Left to Implement
-- Authentification of user, then only the registered user would be allowed to add recipes. And the site administrator would be to only one who could be able to delete or edit recipes.
+- That the user can give a feedback about their experience at participating at this auction site. Then the site could provide an area to display messages from users who completed their purchases process. 
+- Wire up social media to the site (twitter or instagram) so users can be updated of new artifacts coming in the auction.
 - Pagination: eventually the site will gorup up and pagination for the recipes would be neccesary.
  
  
@@ -187,14 +182,3 @@ The photos used in this project are labelled  for reuse.
 The brief for this project was given by Code Institute. I received inspiration for this project from my siter Aurora, who is studying to become a cook. I always wished that we had our own cookbook full of our crazy recipes that we invent during the weekends when we share on family.
 
 [![Build Status](https://travis-ci.org/Rasquin/auction.svg?branch=master)](https://travis-ci.org/Rasquin/auction)
-
-
-
-texto para cobdidiciones de la subastea
-Heritage Auctions strives to provide as much information as possible but encourages
-in-person inspection by bidders. Statements regarding the condition of objects are
-only for general guidance and should not be relied upon as complete statements of 
-fact, and do not constitute a representation, warranty or assumption of liability 
-by Heritage. Some condition issues may not be noted in the condition report but are
-apparent in the provided photos which are considered part of the condition report.
-Please note that we do not de-frame lots estimated at $1,000 or less and may not be able to provide additional details for lots valued under $500. All lots are sold "AS IS" under the Terms & Conditions of Auction.

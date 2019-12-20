@@ -26,13 +26,3 @@ def view_my_biddings(request):
                print(my_biddings)
 
     return render(request, "mybiddings.html", {"auction_won_artifacts": auction_won_artifacts}, {"my_biddings": my_biddings})
-    
-    
-    
-    
-    
-    
-    """
-    the field in the model - 
-user= models.ForeignKey(User, on_delete=models.CASCADE, related_name="artifactuser")
-    """

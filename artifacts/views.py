@@ -10,8 +10,8 @@ def get_all_artifacts(request):
     """
     Get the list of artifacts that are currently at the  auction
     """
-    the_artifacts = Artifact.objects.all()
-    #the_artifacts = Artifact.objects.order_by('published_date')
+    #the_artifacts = Artifact.objects.all()
+    the_artifacts = Artifact.objects.order_by('published_date')
     #Entry.objects.order_by('headline')[0]
     artifacts = []
     
