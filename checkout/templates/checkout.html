@@ -5,39 +5,40 @@
 {% block page_title %}Checkout{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    
-    <div class="col-10">
-        
-        <!-- Artifact Image-->
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <div class="artifact-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
-            </div>    
-        </div>
-        
-        <!-- Artifact Information -->
+<div class="container-fluid panel-body">
+    <div class="row justify-content-center">
 
-        <div class="row text-center">
-                
-            <!-- Artifact Name -->
-            <div class="col-12">
-                <h2>{{ artifact.name }}</h2>
+        <div class="col-10">
+
+            <!-- Artifact Image-->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="artifact-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+                </div>
             </div>
-            <!-- Artifact Description -->
-            <div class="col-12">
-                <p class="artifact-description">{{ artifact.description|truncatewords:100 }}</p>
-            </div>
-            <!-- Artifact Total to pay -->
-            <div class="col-12">
-                <h3>Total to pay:</h3>
-                <p class="font-weight-bold"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>€ {{ artifact.price_to_pay }}</p>
+
+            <!-- Artifact Information -->
+
+            <div class="row text-center bg-light-blue">
+
+                <!-- Artifact Name -->
+                <div class="col-12">
+                    <h2>{{ artifact.name }}</h2>
+                </div>
+                <!-- Artifact Description -->
+                <div class="col-12">
+                    <p class="artifact-description">{{ artifact.description|truncatewords:100 }}</p>
+                </div>
+                <!-- Artifact Total to pay -->
+                <div class="col-12">
+                    <h3>Total to pay:</h3>
+                    <p class="font-weight-bold"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>€ {{ artifact.price_to_pay }}</p>
+                </div>
             </div>
         </div>
+
     </div>
-    
 </div>
-
 <div class="row justify-content-center">
 
     <div class="col-10">

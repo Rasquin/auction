@@ -2,10 +2,54 @@
 
 {% block page_title %}Monica's Auction{% endblock %}
 
+{% block filter %}
+<nav class="navbar navbar-light bg-white justify-content-center">
+    <form action="{% url 'filters' %}" method="get" class="form-inline">
+        {% csrf_token %}
+        <!-- Price Filter -->
+        <div class="form-group mb-2">
+            <label for="amount">Price range:</label>
+
+            <div class="col-11">
+                <section class="range-slider-price range-slider">
+                    <span class="rangePriceValues rangeValues"></span>
+                    <input value="0" min="0" max="10000000" step="5000" type="range" name="min_price">
+                    <input value="10000000" min="0" max="10000000" step="5000" type="range" name="max_price">
+                </section>
+            </div>
+        </div>
+        <!-- Year Filter -->
+        <div class="form-group mb-2">
+            <label for="amount">Year:</label>
+
+            <div class="col-11">
+                <section class="range-slider-year range-slider">
+
+                    <span class="rangeYearValues"></span>
+                    <input value="-2000" min="-2000" max="2020" step="200" type="range" name="min_year">
+                    <input value="2020" min="-2000" max="2020" step="200" type="range" name="max_year">
+                </section>
+            </div>
+        </div>
+        <!-- Origin Filter -->
+        <div class="form-group mb-2">
+            <div class="col-11">
+                <label for="origin">Culture & Origin:</label>
+                <input type="text" class="form-control" id="artifact_origin" name="artifact_origin">
+            </div>
+        </div>
+        <!-- Filter Button -->
+        <button class="btn btn-primary mb-2 margin-top" type="search">Filter</button>
+    </form>
+</nav>
+
+{% endblock %}
+
 {% block content %}
-<div class="row row-flex">
-    {% for artifact in artifacts %}
-        <div class="col-sm-12 col-md-4 artifacts-container">
+<div class="container-fluid">
+    <div class="row row-flex">
+        {% for artifact in artifacts %}
+        <div class="col-sm-12 col-md-4 padding-10">
             <div class="panel-body">
                 <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
 
@@ -13,18 +57,19 @@
                 <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
                 {% if artifact.paid %}
                 <p class="text-center font-weight-bold"> SOLD</p>
-                {% else %}
+                {% else %} 
                     {% if artifact.current_bidding_price < artifact.minimun_bidding_price %}
                     <p class="text-center font-weight-bold"> Minimun bid € {{ artifact.minimun_bidding_price }}</p>
                     {% else %}
                     <p class="text-center font-weight-bold"> Current bid € {{ artifact.current_bidding_price }}</p>
-                    {% endif %}
+                    {% endif %} 
                 {% endif %}
-                
 
-                
+
+
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

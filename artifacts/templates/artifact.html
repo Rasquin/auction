@@ -3,246 +3,216 @@
 {% block page_title %}Monica's Auction{% endblock %}
 
 {% block filter %}
-<form action="{% url 'filters' %}" method="get" class="col-12">
-    {% csrf_token %}
+<nav class="navbar navbar-light bg-white justify-content-center">
+    <form action="{% url 'filters' %}" method="get" class="form-inline">
+        {% csrf_token %}
+        <!-- Price Filter -->
+        <div class="form-group mb-2">
+            <label for="amount">Price range:</label>
 
-    <!-- Price Filter -->
-    <div class="form-group">
-        <div class="row">
-            
-            <div class="col-12 col-md-2">
-                <p><label for="amount">Price range:</label></p>
-            </div>
-            
-            <div class="col-12 col-md-9">
+            <div class="col-11">
                 <section class="range-slider-price range-slider">
-
                     <span class="rangePriceValues rangeValues"></span>
-                    <input value="0" min="0" max="10000000" step="2000" type="range" name="min_price">
-                    <input value="10000000" min="0" max="10000000" step="2000" type="range" name="max_price">
+                    <input value="0" min="0" max="10000000" step="5000" type="range" name="min_price">
+                    <input value="10000000" min="0" max="10000000" step="5000" type="range" name="max_price">
                 </section>
             </div>
         </div>
-    </div>
-    
-    <!-- Year Filter -->
-    <div class="form-group">
-        <div class="row">
-            
-            <div class="col-12 col-md-2">
-                <p><label for="amount">Year:</label></p>
-            </div>
-            
-            <div class="col-12 col-md-9">
+        <!-- Year Filter -->
+        <div class="form-group mb-2">
+            <label for="amount">Year:</label>
+
+            <div class="col-11">
                 <section class="range-slider-year range-slider">
 
                     <span class="rangeYearValues"></span>
-                    <input value="-2000" min="-2000" max="2020" step="20" type="range" name="min_year">
-                    <input value="2020" min="-2000" max="2020" step="20" type="range" name="max_year">
+                    <input value="-2000" min="-2000" max="2020" step="200" type="range" name="min_year">
+                    <input value="2020" min="-2000" max="2020" step="200" type="range" name="max_year">
                 </section>
             </div>
         </div>
-    </div>
-    
-    <!-- Origin Filter -->
-    <div class="form-group">
-        <div class="row">
-            
-            <div class="col-12 col-md-2">
-                <p><label for="origin">Culture & Origin:</label></p>
-            </div>
-            
-            <div class="col-12 col-md-9">
+        <!-- Origin Filter -->
+        <div class="form-group mb-2">
+            <div class="col-11">
+                <label for="origin">Culture & Origin:</label>
                 <input type="text" class="form-control" id="artifact_origin" name="artifact_origin">
             </div>
         </div>
-    </div>
-    
-    <!-- Filter Button -->
-    <div class="form-group">
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center">
-                    <button class="btn btn-primary" type="search">Filter</button>
-                </p>
-            </div>
-        </div>
-    </div>
-
-</form>
+        <!-- Filter Button -->
+        <button class="btn btn-primary mb-2 margin-top" type="search">Filter</button>
+    </form>
+</nav>
 {% endblock %}
 
 {% block content %}
-<div  class="row justify-content-center">
-    <div class="col-10">
-        
-        <!-- Artifact Image-->
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <div class="artifact-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
-            </div>
-        </div>
-        
-        
-        <!-- Artifact Name & Auction dates-->
-        <div class="row text-center">
-            <div class="col-12">
-                <h2>{{ artifact.name }}</h2>
-            </div>
-            <div class="col-12">
-                <p>Bidding started on {{ artifact.published_date }}</p>
-            </div>
-            <div class="col-12">
-                <p>Bidding finish on {{ artifact.end_date }}</p>
-            </div>
-        </div>
-        
-        <!-- Artifact box details -->
-        <div  class="row">
-            
-            <!-- Info about artifact-->
-            <div class="col-12 col-md-9">
-                <!-- Artifact Lote-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Lote number:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.id }}</p>
-                    </div>
-                </div>
-                <!-- Artifact Origin-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Origin:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.origin }}</p>
-                    </div>
-                </div>
-        
-                <!-- Artifact Year-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Year:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.year }}</p>
-                    </div>
-                </div>
-        
-                <!-- Artifact Description-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Description:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.description }}</p>
-                    </div>
-                </div>
-        
-                <!-- Artifact Crafting-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Crafting:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.crafting }}</p>
-                    </div>
-                </div>
-        
-                <!-- Artifact Trajectory-->
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Trajectory:</p>
-                    </div>
-                    <div class="col-12">
-                        <p>{{ artifact.trajectory }}</p>
-                    </div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10 panel-body">
+
+            <!-- Artifact Image-->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="artifact-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
                 </div>
             </div>
-            
-            <!-- Bidding & Inmediate buying-->
-            <div class="col-12 col-md-3">
-                <!-- Experts value-->
-                <div class="row text-center">
-                    <div class="col-12">
-                        <p class="font-weight-bold">Expert's value:</p>
+
+            <!-- Artifact Name & Auction dates-->
+            <div class="row text-center bg-light-blue ">
+                <div class="col-12">
+                    <h2>{{ artifact.name }}</h2>
+                </div>
+                <div class="col-12">
+                    <p>Bidding started on {{ artifact.published_date }}</p>
+                </div>
+                <div class="col-12">
+                    <p>Bidding finish on {{ artifact.end_date }}</p>
+                </div>
+            </div>
+
+            <!-- Artifact box details -->
+            <div class="row bg-light-blue ">
+
+                <!-- Info about artifact-->
+                <div class="col-12 col-md-9">
+                    <!-- Artifact Lote-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Lote number:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.id }}</p>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        <p>€ {{ artifact.expert_value }} aprox</p>
+                    <!-- Artifact Origin-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Origin:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.origin }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Artifact Year-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Year:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.year }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Artifact Description-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Description:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.description }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Artifact Crafting-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Crafting:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.crafting }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Artifact Trajectory-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Trajectory:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artifact.trajectory }}</p>
+                        </div>
                     </div>
                 </div>
-                <!-- Bidding-->
-                <div class="row text-center  ">
-                    <!-- Artifact status  -->
-                    {% if artifact.on_bidding == True %}
+
+                <!-- Bidding & Inmediate buying-->
+                <div class="col-12 col-md-3">
+                    <!-- Experts value-->
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Expert's value:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>€ {{ artifact.expert_value }} aprox</p>
+                        </div>
+                    </div>
+                    <!-- Bidding-->
+                    <div class="row text-center  ">
+                        <!-- Artifact status  -->
+                        {% if artifact.on_bidding == True %}
                         <!-- On Auction >> Current Bidding-->
-                        
-                        {% if artifact.current_bidding_price < artifact.minimun_bidding_price %}
-                         <!-- Minimun bidding price required -->
-                        <div class="col-12">
-                            <p class="font-weight-bold">Minimun Bidding:</p>
-                        </div>
-                        <div class="col-12">
-                            <p>€ {{ artifact.minimun_bidding_price }}</p>
-                        </div>
-                        
-                        {% else %}
-                         <!-- Bidding higher than minimum bidding price -->
-                        <div class="col-12">
-                            <p class="font-weight-bold">Current Bidding:</p>
-                        </div>
-                        <div class="col-12">
-                            <p>€ {{ artifact.current_bidding_price }} - {{ user.username }}</p>
-                        </div>
-                        {% endif %}
-                        
-                        <!-- Place New Bidding Form-->
-                        <div class="col-12">
-                            <form method="post" action="{% url 'place_bidding' artifact.pk %}">
-                                {% csrf_token %}
-                                <div class="row form-group">
+
+                            {% if artifact.current_bidding_price < artifact.minimun_bidding_price %} 
+                                <!-- Minimun bidding price required -->
+                                <div class="col-12">
+                                    <p class="font-weight-bold">Minimun Bidding:</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>€ {{ artifact.minimun_bidding_price }}</p>
+                                </div>
+                                {% else %}
+                                <!-- Bidding higher than minimum bidding price -->
+                                <div class="col-12">
+                                    <p class="font-weight-bold">Current Bidding:</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>€ {{ artifact.current_bidding_price }} - {{ user.username }}</p>
+                                </div>
+                                {% endif %}
+                                <!-- Place New Bidding Form-->
+                                <div class="col-12">
+                                    <form method="post" action="{% url 'place_bidding' artifact.pk %}">
+                                        {% csrf_token %}
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <input name="new_bidding" type="number" min="1" class="form-control" placeholder="€€€">
+                                            </div>
+                                            <div class="col-12 padding-10">
+                                                <span class="input-group-btn"> <button class="btn btn-success" type="submit">New Bid</button></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Inmediately Buy-->
+                                <div class="row text-center">
+                                    <!-- Buying Price-->
                                     <div class="col-12">
-                                        <input name="new_bidding" type="number" min="1" class="form-control" placeholder="€€€">
+                                        <p class="font-weight-bold">Inmediate buying price:</p>
                                     </div>
                                     <div class="col-12">
-                                        <span class="input-group-btn"> <button class="btn btn-success" type="submit">New Bid</button></span>
+                                        <p>€ {{ artifact.buy_now_price }}</p>
+                                    </div>
+                                    <!-- Buying form-->
+                                    <div class="col-12">
+                                        <a class="btn btn-primary" href="{% url 'checkout' pk=artifact.pk %}" role="button">Buy Now !!!</a>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Inmediately Buy-->
-                        <div class="row text-center">
-                            <!-- Buying Price-->
+
+
+                            {% else %}
+                            <!-- No on Auction >> Sold By-->
+
                             <div class="col-12">
-                                <p class="font-weight-bold">Inmediate buying price:</p>
+                                <p class="font-weight-bold">Sold:</p>
                             </div>
                             <div class="col-12">
-                                <p>€ {{ artifact.buy_now_price }}</p>
+                                <p>€ {{ artifact.price_to_pay }}</p>
                             </div>
-                            <!-- Buying form-->
                             <div class="col-12">
-                                <a class="btn btn-primary" href="{% url 'checkout' pk=artifact.pk %}" role="button">Buy Now !!!</a>
+                                <p class="font-weight-bold">Closed Auction</p>
                             </div>
-                        </div>
-                
-                        
-                    {% else %}
-                    <!-- No on Auction >> Sold By-->
-                    
-                        <div class="col-12">
-                            <p class="font-weight-bold">Sold:</p>
-                        </div>
-                        <div class="col-12">
-                            <p>€ {{ artifact.price_to_pay }}</p>
-                        </div>
-                        <div class="col-12">
-                            <p class="font-weight-bold">Closed Auction</p>
-                        </div>
-                    {% endif %}
-                    
+                            {% endif %}
+
+                    </div>
                 </div>
             </div>
         </div>

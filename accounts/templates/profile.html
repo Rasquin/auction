@@ -4,23 +4,25 @@
 
 
 {% block content %}
+<div class="container-fluid panel-body">
 
-<h1>{{ user }}'s Profile</h1>
+    <h1>{{ user }}'s Profile</h1>
 
-<div class="row">
-    <div class="col-12">
-        <p class="font-weight-bold">User Name:</p>
+    <div class="row">
+        <div class="col-12">
+            <p class="font-weight-bold">User Name:</p>
+        </div>
+        <div class="col-12">
+            <p>{{ profile.username }}</p>
+        </div>
     </div>
-    <div class="col-12">
-        <p>{{ profile.username }}</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <p class="font-weight-bold">Email:</p>
-    </div>
-    <div class="col-12">
-        <p>{{ profile.email }}</p>
+    <div class="row">
+        <div class="col-12">
+            <p class="font-weight-bold">Email:</p>
+        </div>
+        <div class="col-12">
+            <p>{{ profile.email }}</p>
+        </div>
     </div>
 </div>
 

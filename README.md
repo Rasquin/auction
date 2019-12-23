@@ -96,7 +96,7 @@ Libraries:
 - [Bootstrap v4.3.1](https://getbootstrap.com/docs/4.3/getting-started/introduction/) scripts (JavaScript, jQuery and Popper.js) to get functionality in the Bootstrap's components, and css  for most of the applied style 
 - [Bootstrap-Select v1.13.9](https://developer.snapappointments.com/bootstrap-select/) scripts and css to have a more interective and styled select bottom.
 - [Fontawesome Version 5.9.0](https://fontawesome.com/).
-- [Google Fonts](https://fonts.google.com/specimen/Charm), from here it is got the font type of the whole website ('Charm', cursive).
+- [Google Fonts](https://fonts.google.com/?selection.family=Germania+One), from here it is got the font type of the whole website ('Germania One', cursive).
 
 
 Own CSS style sheet. To make my own styles and overwrite some of the Bootstrap style library.
