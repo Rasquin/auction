@@ -15,6 +15,7 @@ stripe.api_key = settings.STRIPE_SECRET
 @login_required()
 def checkout(request, pk):
     artifact = get_object_or_404(Artifact, pk=pk)
+    artifact.by_user = request.user.id
     print(artifact.pk)
     if request.method == "POST":
         order_form = OrderForm(request.POST)
@@ -48,6 +49,7 @@ def checkout(request, pk):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 artifact.paid = True
+                artifact.on_bidding = False
                 artifact.save()
                 return redirect(reverse('artifacts'))
             else:
@@ -60,3 +62,7 @@ def checkout(request, pk):
         order_form = OrderForm()
     
     return render(request, "checkout.html", {"artifact": artifact, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    
+    
+    
+    

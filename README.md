@@ -40,7 +40,7 @@ This project use a base template that is inherited to the others templates that 
 ### Existing Features
 
 **Apps** (backend) Each app was built in order to control a feature of the proyject.
-- Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates.
+- Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates. Users can log in with their username or email. If they have missed their password they can request a new one. User can also register, check their profile and log out.
 - Artifacts app: Here is the items list for the auction. It has the artifact model. It contains 3 views and 2 templates. In the artifacts.html the user can see a list of all the artifacts with their price, a small description; if the artifact is on auction the user can see the current/minumun bidding and if the artifact is not on aution it will appear as sold. In the artifact.html the user can see all the characteristics of the respective artifact as well as the state of the bidding.
 - Bidding app: Here is where the bidding proccess happens.It has one view with logging of user required. It has no templates. Each time a new bidding is placed, the inmediate buying price is updated. The bidding has to be bigger than the minimun bidding price or than the current bidding.
 - Mybiddings app: In this app the user can see the artifactcs that he has won through the auction. He/she can also check if the artifact is paid or not. One view that renders to mybiddings.html
@@ -107,26 +107,24 @@ The whole code (html & CSS) was validated through the [Markup Validation Service
 The code was continuously monitored through the "Inspect" function of the Google Chrome Browser. Making sure that the website was completely responsive. The  project looks as expected in different browsers (GoogleChrome, InternetExplorer, Samsung internet).
 
 Testing for the app.py:
-1. each time a new collection was introduced, its content was corroborate through the
-print function of python. Same was done while creating the diferents for's that belong 
-to the routes. Example: for index, category in enumerate(categories): 
-print (index,category['category_name'])
+1. each time a change in the views, form, templates or style was introduced, it was corroborated life on the browser (Django)
 2.  navbar: all links of the navbar where manually tested.
-3.  All the Searches by Category/ Cuisine / Difficulty Level give the expected result.
+3.  All the Searches by price, year, origin and name  give the expected result.
 4.  All buttoms work as expected. 
-5.  Each time the user want to add a new ingredient or steep method, the form works perfect. Same at editing.
+5.  Each functionality of the authentication was manually checked.
 6.  When clicking at the name of a recipe you are redirect to where you can get more infor about it.
 7.  Form: if you try to submit it empty, a message telling you to fill the missing area appears.
 
 
 Problems unsolved:
-- origin filter
+
 
 Problems solved:
 - local variable 'artifact' referenced before assignment. Solved by declaring the variable at the beginning of the view and not inside the if.
 - Reverse for 'checkout' with no arguments not found. 1 pattern(s) tried: ['checkout/(?P<pk>\\d+)/$']. Solved by intrucing the respective pk value together with the checkout url
 - AttributeError: 'str' object has no attribute 'fields'. Solved by making sure that when passing multiple variables through the return statements so that they're accessible from the template,they were all in the same dictionary.
 - Stripe was unable to pay with this car. Solved throughmaking sure the scripts for stripe were after the jquery scripts.
+- ConnectionRefusedError at /accounts/password-reset/ [Errno 111] Connection refused. I had forgotten to configurate Django to send actual emails. 
 
 Problems found by the code validator and solved:
 - CSS: no errors
@@ -161,10 +159,11 @@ Result of evaluation with JSHint:
 ### Content
 The Auction Conditions content was taken from [Heritage Auctions](https://www.ha.com/)
 The artifacts information was taken from the next websites:
-- [Canvas  Place de la Bastille](https://fineart.ha.com/itm/edouard-leon-cortes-french-1882-1969-place-de-la-bastille-oil-on-canvas-21-1-2-x-18-inches-546-x-457-cm-signe/a/5436-68001.s?ic4=GalleryView-ShortDescription-071515)
-- [Gemstone: Chrome Tourmaline - 32.6 Cts.](https://fineart.ha.com/itm/nature-and-science/gemstone-chrome-tourmaline-326-cts-tanzania/p/5434-11086.s?ic4=GalleryView-ShortDescription-071515)
-- [Gemstones: Garnet (Set of 40)](https://fineart.ha.com/itm/nature-and-science/gemstones-garnet-set-of-40-various-localities-total-40-/p/5434-11105.s?ic4=GalleryView-ShortDescription-071515)
-- [A Superb Diquis Gold Figure](https://fineart.ha.com/itm/pre-columbian/a-superb-diquis-gold-figure/a/5424-70222.s?ic4=GalleryView-ShortDescription-071515)
+- [Tiger's-Eye Slab Stone](https://fineart.ha.com/itm/nature-and-science/tiger-s-eye-slab-mt-brockman-station-pilbara-western-australia-866-x-748-x-090-inches-2200-x/a/211952-79002.s?ic4=GalleryView-Thumbnail-071515)
+- [Fluorite Stone](https://fineart.ha.com/itm/nature-and-science/fluorite-xianghualing-sn-polymetallic-ore-field-linwu-co-chenzhou-hunan-china-489-x-488-x-287/a/211952-79006.s?ic4=GalleryView-Thumbnail-071515)
+- [Ammonite Fossil](https://fineart.ha.com/itm/nature-and-science/ammonite-fossil-cleoniceras-sp-cretaceous-madagascar-531-x-422-x-146-inches-1350-x-1072-x-370/a/211952-79011.s?ic4=GalleryView-ShortDescription-071515)
+- [The Fighting Pair - Allosaurus vs Stegosaurus](https://fineart.ha.com/itm/nature-and-science/the-fighting-pair-allosaurus-vs-stegosaurus/a/6061-49071.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
+- [THE FOURTH LARGEST PIECE OF THE MOON: DAR AL GANI (DaG) 1058](https://fineart.ha.com/itm/nature-and-science/from-the-far-side-of-the-moon-the-fourth-largest-piece-of-the-moon-dar-al-gani-dag-1058-lunar-breccia-lu/a/6089-49049.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
 - [A Large Diquis Gold Frog Pendant](https://fineart.ha.com/itm/pre-columbian/a-large-diquis-gold-frog-pendant/a/5424-70224.s?ic4=GalleryView-ShortDescription-071515)
 - [A Tibetan Painted Wood Chest](https://fineart.ha.com/itm/asian-art/a-tibetan-painted-wood-chest-18th-19th-century-29-3-4-x-56-3-4-x-20-1-2-inches-756-x-1441-x-521-cm-/p/13152-28001.s?ic4=GalleryView-ShortDescription-071515)
 - [A Large Dogon Post for Meeting House, Toguna](https://fineart.ha.com/itm/tribal-art/a-large-dogon-post-for-meeting-house-toguna/a/5424-70254.s?ic4=GalleryView-Thumbnail-071515)
@@ -172,7 +171,7 @@ The artifacts information was taken from the next websites:
 - [6 wood panel Jean Dunand](https://fineart.ha.com/itm/furniture/jean-dunand-french-1877-1942-two-figures-six-panel-screen-circa-1928-lacquered-wood-57-3-4-x/a/5378-79039.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
 - [The Largest Gold Nugget from the Western Hemisfere - Boot of Cortez](https://fineart.ha.com/itm/nature-and-science/the-largest-gold-nugget-from-the-western-hemisphere-boot-of-cortez/a/5000-48202.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
 - [Rose Quartz . "La Madona Rosa"](https://fineart.ha.com/itm/nature-and-science/rose-quartz-la-madona-rosa-lavra-berilo-branco-sapucaia-do-norte-galileia-doce-v/a/5110-87153.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
-- [The Fighting Pair - Allosaurus vs Stegosaurus](https://fineart.ha.com/itm/nature-and-science/the-fighting-pair-allosaurus-vs-stegosaurus/a/6061-49071.s?ic10=FeaturedPastSalePrices-ItemImageDesc-052317&tab=ArchiveSearchResults-012417)
+
 
 ### Media
 The photos used in this project are labelled  for reuse.

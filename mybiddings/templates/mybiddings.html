@@ -5,59 +5,171 @@
 {% block page_title %}My Bidding{% endblock %}
 {% block content %}
 
-<!-- List of artifacts won at auction -->
-<div class="row row-flex">
+<div class="container-fluid">
     
-    <div class="col-12"> <h2 class="text-center">Artifacts Won at Auction</h2></div>
-    
-    <!-- Each artifact container -->
-    {% for artifact in auction_won_artifacts %}
-    
-    <div class="col-sm-12 col-md-4 padding-10">
+    <!-- List of artifacts immediately boght from the auction -->
+    <div class="row row-flex">
         
-        <div class="panel-body text-center">
-            
-            <!-- Artifact imagen-->
-            <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
-        
-            <!-- Artifact description -->
-            <h3 ><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
-            <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
-    
-            <!-- Status of payment of the artifact -->
-            {% if artifact.paid == False %}
-            <!-- Price to pay -->
-            <div class="row">
-                <div class="col-12">
-                    <p class="font-weight-bold">Price to Pay:</p>
-                </div>
-                <div class="col-12">
-                    <p>€ {{ artifact.price_to_pay }}</p>
-                </div>
-            </div>
-            <!-- Button to redirect for payment-->
-            <div class="row">
-                <div class="col-12">
-                    <a href="{% url 'checkout' pk=artifact.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Pay Now</a>
-                </div>
-            </div>
-            {% else %}
-            <!-- Paid Price -->
-            <div class="row">
-                <div class="col-12">
-                    <p class="font-weight-bold">Paid </p>
-                </div>
-            </div>
-            {% endif %}
-            
-            
+        {% if not immeditely_bought_artifacts %}
+        <div class="col-12  text-center">
+            <p>You have not bought immediately any artifact yet from the auctions <i class="far fa-meh"></i> </p>
         </div>
         
+        {% else %}
+            <div class="col-12"> <h2 class="text-center">Artifacts Immediately Bought at Auction</h2></div>
+            <!-- Each artifact container -->
+            {% for artifact in immeditely_bought_artifacts %}
+            <div class="col-sm-12 col-md-4 padding-10">
+                
+                <div class="panel-body text-center">
+                    
+                    <!-- Artifact imagen-->
+                    <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+                
+                    <!-- Artifact description -->
+                    <h3 ><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
+                    <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+            
+                    <!-- Status of payment of the artifact -->
+                    {% if artifact.paid == False %}
+                    <!-- Price to pay -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Price to Pay:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>€ {{ artifact.price_to_pay }}</p>
+                        </div>
+                    </div>
+                    <!-- Button to redirect for payment-->
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{% url 'checkout' pk=artifact.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Pay Now</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Paid Price -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Paid </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    
+                </div>
+                
+                
         
-
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    <!-- List of artifacts won at auction -->
+    <div class="row row-flex">
+        
+        {% if not auction_won_artifacts %}
+        <div class="col-12 text-center">
+            <p>At this moment you have not won any auction <i class="far fa-frown"></i></p>
+        </div>
+        
+        {% else %}
+            <div class="col-12"> <h2 class="text-center">Artifacts Won at Auction</h2></div>
+            <!-- Each artifact container -->
+            {% for artifact in auction_won_artifacts %}
+            <div class="col-sm-12 col-md-4 padding-10">
+                
+                <div class="panel-body text-center">
+                    
+                    <!-- Artifact imagen-->
+                    <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+                
+                    <!-- Artifact description -->
+                    <h3 ><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
+                    <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+            
+                    <!-- Status of payment of the artifact -->
+                    {% if artifact.paid == False %}
+                    <!-- Price to pay -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Price to Pay:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>€ {{ artifact.price_to_pay }}</p>
+                        </div>
+                    </div>
+                    <!-- Button to redirect for payment-->
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{% url 'checkout' pk=artifact.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Pay Now</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Paid Price -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Paid </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    
+                </div>
+                
+                
+        
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    <!-- List of artifacts where user has currently the winner bidding at auction -->
+    <div class="row row-flex">
+        
+        {% if not my_biddings %}
+        <div class="col-12 text-center">
+            <p>At this moment you are not winning any current bidding at auction<i class="far fa-sad-tear"></i></p>
+        </div>
+        
+        {% else %}
+            <div class="col-12"> <h2 class="text-center">Winning biddings at Artifacts currently on  Auction</h2></div>
+            <!-- Each artifact container -->
+            {% for artifact in my_biddings %}
+            <div class="col-sm-12 col-md-4 padding-10">
+                
+                <div class="panel-body text-center">
+                    
+                    <!-- Artifact imagen-->
+                    <div class="artifacts-image" style="background-image: url('{{ MEDIA_URL }}{{ artifact.image }}')"></div>
+                
+                    <!-- Artifact description -->
+                    <h3 ><a href="{% url 'artifact' pk=artifact.pk %}">{{ artifact.name }}</a></h3>
+                    <p class="artifact-description">{{ artifact.description|truncatewords:40 }}</p>
+            
+                    <!-- Status of payment of the artifact -->
+                    {% if artifact.paid == False %}
+                    <!-- Current bidding -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="font-weight-bold">Current bidding:</p>
+                        </div>
+                        <div class="col-12">
+                            <p>€ {{ artifact.current_bidding_price }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    
+                </div>
+                
+                
+        
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
 
-    {% endfor %}
 </div>
-
 {% endblock %}

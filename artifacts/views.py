@@ -17,11 +17,12 @@ def get_all_artifacts(request):
     
     for artifact in the_artifacts:
         if artifact.published_date <= timezone.now() <  artifact.end_date:
-            artifact.on_bidding = True
-            artifact.save()
-            artifacts.append(artifact)
-            print(timezone.now())
-            print(artifact.end_date)
+            if not artifact.paid:
+                artifact.on_bidding = True
+                artifact.save()
+                artifacts.append(artifact)
+                print(timezone.now())
+                print(artifact.end_date)
         else:
             artifact.on_bidding = False
             artifact.save()

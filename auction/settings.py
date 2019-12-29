@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'auction.wsgi.application'
 
 
 if "DATABASE_URL" in os.environ:
-    print("This thing")
+    print("Postgress db")
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 else:
@@ -182,3 +182,11 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+# Authentication for accounts app
+#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+EMAIL_PORT = 587
