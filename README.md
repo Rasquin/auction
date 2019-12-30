@@ -1,15 +1,12 @@
 # MONICA'S AUCTION - project IV
 
-DATABASE_URL
-postgres://rogsqwpgjvtrfi:d51ba9fe70746736f165e5407e34ace368845d062d3992730526b5e82d295071@ec2-176-34-184-174.eu-west-1.compute.amazonaws.com:5432/ddq66gro86o49o
-
 Full Stack Frameworks with Django Milestone Project. This project consist of a full-stack site based on centrally-owned dataset  for an auction place. This site provides an  authentication mechanism for users, so that they will be able to find, bid and purchase antique artifacts. 
 
 This project is deployed at [Heroku](https://monica-auction.herokuapp.com/)
 
 
 ## UX
-This website has been designed to offer the users a nice experience at acquiring antique artifacts of their interest. This auction site is targeting antique items collector users.
+This website has been designed to offer the users a nice experience at acquiring antique artifacts of their interest through an auction. This auction site is targeting antique items collector users.
 The visitors of this website will be able to look for artifacts based on price, age and origin. Also he/she could directly by the name of the artifact. Once selected the desired criteria, a list of artifacts that fit the search criteria will be displayed. For each item, the user will be able to see a picture, the name and the item price.
 After clicking on an artifact, the user will be redirected to a page where he/she would be able to know more about the object ( name, price, age, description, crafting and trajectory). If the user is interested on acquiring this item, he can bid on it or purchase it immediately for a higher price.
 In order to purchase or bid, the user has to be registered and logged in.
@@ -31,57 +28,55 @@ The user will be able to pay with credit card.
 
 - As a user, I would like to pay for my purchased item, and feel secure that my card data won’t be stolen. Then the side should provide a secure payment mechanism that doesn’t expose its users to insecure situations.
 
+- As a user, I need to register on the site to be able to participate on the auction. The site should provide a mechanism to register, logg in, log out and check the profile of a user.
+
+- As a user, I may forget my password to loggin. The site should provide a mechanism to recover the user password.
+
 
 ## Features
 
-This project works with sqlite3 database. The pricipal folder of the project is the auction folder, from there all the apps are tied though the urls and and registered in the settings.
+This project works with sqlite3 database for test and postgres in production and deployment. The pricipal folder of the project is the auction folder, from there all the apps are tied though the urls and registered on the settings.
 This project use a base template that is inherited to the others templates that result from the  different apps. 
 
 ### Existing Features
 
 **Apps** (backend) Each app was built in order to control a feature of the proyject.
-- Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates. Users can log in with their username or email. If they have missed their password they can request a new one. User can also register, check their profile and log out.
-- Artifacts app: Here is the items list for the auction. It has the artifact model. It contains 3 views and 2 templates. In the artifacts.html the user can see a list of all the artifacts with their price, a small description; if the artifact is on auction the user can see the current/minumun bidding and if the artifact is not on aution it will appear as sold. In the artifact.html the user can see all the characteristics of the respective artifact as well as the state of the bidding.
+- Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates. Users can log in with their username or email. If they have missed their password they can request a new one. User can also register, check their profile and log out. There are 5 extra templates to reset the password.
+ * index.html: Just render an index.
+ * login.html: User can log in.
+ * profile.html: User can check their profile.
+ * registration.html: User can registrate on the site.
+ * password_reset_complete.html
+ * password_reset_confirm.html
+ * password_reset_done.html
+ * password_reset_email.html
+ * password_reset_form.html
+- Artifacts app: Here is the items list for the auction. It has the artifact model. It contains 3 views and 2 templates. 
+ * artifacts.html: the user can see a list of all the artifacts with their price, a small description; if the artifact is on auction the user can see the current/minumun bidding and if the artifact is not on aution it will appear as sold. 
+ * artifact.html: the user can see all the characteristics of the respective artifact as well as the state of the bidding. It give the user the option to participate in the bidding or to purchase the item inmediately.
 - Bidding app: Here is where the bidding proccess happens.It has one view with logging of user required. It has no templates. Each time a new bidding is placed, the inmediate buying price is updated. The bidding has to be bigger than the minimun bidding price or than the current bidding.
-- Mybiddings app: In this app the user can see the artifactcs that he has won through the auction. He/she can also check if the artifact is paid or not. One view that renders to mybiddings.html
+- Mybiddings app: In this app the user can see the artifactcs that he has won through the auction, also those item that where inmmediately purchased or those in which the user has the current winning bid. He/she can also check if the artifact is paid or not. One view that renders to mybiddings.html
 - Checkout app: When the user is ready to pay, the proccess is done through this app. Here the user has to fill a form up with his/her personal data and the respective credicard. This app works with the help of the stripe API. It has only 1 view with loggin required and render to the checkout.html
 - Search app: Here the user can look for something special. He/she can search directly by the name of an artifact or can filter them by price, year or origin. It contains 2 views, one for each method (search or filter). It gives its results in the artifactcs.html
 - About app: It is an app where some backgroung info about the site is given to the user. It has a view that render to about.html 
 
-**templates** There are 13 html templates. Each of them displays a different functionality
-of this website.
-- base: it has all the rehusable html that is share to all the other templates. Here 
- it is contained the navbar and the footer, here is added all the style-sheets and 
-scripts.  The navbar allows the user to navegate through the different sections of the 
-cookbook template, to check directly all recipes and/or add a new recipe. The footer
-contains links to social media and copy-right text.
-- cookbook: It is the home of the site.It has 5 sections
-   * Home: Welcome to the website and invitation to the user to know 'what do they would like to eat today?
-   
-- addcategory / addcuisine / addrecipe: All of them allow to the user to add the 
- respective feature. Each template gives the option to save or cancel the action.
-    * addcategory: The user is requested to write the name for the new category. The number of recipes variable is fixed to 0 automatically.
+**templates** There are 14 html templates. Each of them displays a different functionality
+of this website and are rendered by the different apps. All templates work with the base.html template, which contains all the html basic structure (head, body, footer) with their respective functionalities (scripts, styles, block contents, navbar).
 
-- allrecipes / recipesbycategory / recipesbycuisine / recipesbydifficulty: Display  of each criteria recipes a list  based on the number of views. The user can view, edit and/or delete the recipe. 
-- editcategory / editcuisine / editrecipe: Edit the selected feature. The user can save chamges or cancel the action
-- recipe: display the actual recipe.
 
 **style** The bootstrap library was used to apply style. Besides there is the own style.
 The project was made considering the "first small screen" principle, from there it
 was adapted to larger sizes of screens.
 
 **JavaScript** The project content the neccesary JS to make its components to work.
-Some come from the bootstrap/ bootstrap-select functionality. There is also own JS 
-to make the add/ edit recipe form works.
-- Ingredients Add: jQuery that allow user to add a new ingredient to the list of ingredients
-- Method Add: jQuery that allow user to add a new steep in to the method.
+There is also own JS, mostly to make the double range bars work.
 
 ### Features Left to Implement
 - That the user can give a feedback about their experience at participating at this auction site. Then the site could provide an area to display messages from users who completed their purchases process. 
 - Wire up social media to the site (twitter or instagram) so users can be updated of new artifacts coming in the auction.
 - Pagination: eventually the site will gorup up and pagination for the recipes would be neccesary.
- 
- 
+
+
 ## Technologies Used
 
 This project was made with HTML5, CSS3, JavaScript and python3. Besides those, the following tools were used:
