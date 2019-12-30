@@ -143,7 +143,7 @@ There are 3 functions in this file.
 - This project is available in Heroku  platform under the name of [ monica-auction](https://git.heroku.com/monica-auction.git)
 
 
-- The wireframes are located in [static/wireframes/](https://github.com/Rasquin/cookbook/tree/master/static/wireframes)
+- The wireframes are located in [static/wireframes/](https://github.com/Rasquin/auction/tree/master/static/wireframes)
 
 - You can check this project in the next  [Link](https://monica-auction.herokuapp.com/)
 
