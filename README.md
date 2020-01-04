@@ -42,15 +42,15 @@ This project use a base template that is inherited to the others templates that 
 
 **Apps** (backend) Each app was built in order to control a feature of the proyject.
 - Accounts app: It controls the user authentication through making an account for each of them. It consist of 5 views and 4 templates. Users can log in with their username or email. If they have missed their password they can request a new one. User can also register, check their profile and log out. There are 5 extra templates to reset the password.
- * index.html: Just render an index.
- * login.html: User can log in.
- * profile.html: User can check their profile.
- * registration.html: User can registrate on the site.
- * password_reset_complete.html
- * password_reset_confirm.html
- * password_reset_done.html
- * password_reset_email.html
- * password_reset_form.html
+    * index.html: Just render an index.
+    * login.html: User can log in.
+    * profile.html: User can check their profile.
+    * registration.html: User can registrate on the site.
+    * password_reset_complete.html
+    * password_reset_confirm.html
+    * password_reset_done.html
+    * password_reset_email.html
+    * password_reset_form.html
 - Artifacts app: Here is the items list for the auction. It has the artifact model. It contains 3 views and 2 templates. 
  * artifacts.html: the user can see a list of all the artifacts with their price, a small description; if the artifact is on auction the user can see the current/minumun bidding and if the artifact is not on aution it will appear as sold. 
  * artifact.html: the user can see all the characteristics of the respective artifact as well as the state of the bidding. It give the user the option to participate in the bidding or to purchase the item inmediately.
