@@ -183,19 +183,19 @@
                                     </form>
                                 </div>
                                 <!-- Inmediately Buy-->
-                                <div class="row text-center">
+                                
                                     <!-- Buying Price-->
-                                    <div class="col-12">
-                                        <p class="font-weight-bold">Inmediate buying price:</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <p>€ {{ artifact.buy_now_price }}</p>
-                                    </div>
-                                    <!-- Buying form-->
-                                    <div class="col-12">
-                                        <a class="btn btn-primary" href="{% url 'checkout' pk=artifact.pk %}" role="button">Buy Now !!!</a>
-                                    </div>
+                                <div class="col-12">
+                                    <p class="font-weight-bold">Inmediate buying price:</p>
                                 </div>
+                                <div class="col-12">
+                                    <p>€ {{ artifact.buy_now_price }}</p>
+                                </div>
+                                <!-- Buying now botton to form-->
+                                <div class="col-12 margin-bottom">
+                                    <a class="btn btn-primary" href="{% url 'checkout' pk=artifact.pk %}" role="button">Buy Now !!!</a>
+                                </div>
+                               
 
 
                             {% else %}

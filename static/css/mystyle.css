@@ -26,6 +26,11 @@ a {
 .margin-top{
   margin-top: 22px;
 }
+
+.margin-bottom{
+  margin-bottom: 22px;
+}
+
 .container-general{
   background-color: #5d9bde;
   padding: 10px 0px;

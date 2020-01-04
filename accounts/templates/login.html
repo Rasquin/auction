@@ -7,11 +7,29 @@
 {% block content %}
 
 <div class="container-fluid panel-body">
+    
+    <!-- User login form-->
     <h1 class="text-center">User Login</h1>
     <form method="POST">
         {% csrf_token %} {{ login_form | as_bootstrap }}
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <div class="row">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    
     </form>
-    <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+
+    <!-- Reset password & register button-->
+    <div class="row text-center margin-top">
+        <div class="col-12 col-md-6">
+            <p>Did you forget your password></p>
+            <a class="nav-link" href="{% url 'password_reset' %}"> <i class="fas fa-redo"></i>  Reset Password</a></div>
+        <div class="col-12 col-md-6">
+            <p>Are you not registered yet?</p>
+            <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-user-plus"></i>  Register</a></div>
+    </div>
+    
+    
 </div>
 {% endblock %}
